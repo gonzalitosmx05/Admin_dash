@@ -27,7 +27,7 @@
           </div>        
           <div class="form-group">
             <label class="d-block text-center" for="pass">Password</label>
-              <input type="password" class="form-control" id="pass">
+              <input type="text" class="form-control" id="pass">
           </div>                       
         </div>
         <div class="modal-footer">
