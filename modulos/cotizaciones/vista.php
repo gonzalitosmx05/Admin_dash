@@ -5,7 +5,15 @@ include("funciones/cargarClientes.php");
 include("modals/preview.php");
 require ("../estructura/sidebar.php");
 ?>
-
+<style>
+      .table-bordered th, .table-bordered td {
+         border: none;
+         border-right: 1px solid #dee2e6;/* color de los bordes verticales */
+      }
+      .table-bordered thead th {
+         border-bottom: 2px solid #dee2e6; /* color del borde inferior de las celdas de encabezado */
+      }
+   </style>
 
 <div class="p-2">
     <div class="card">
@@ -81,10 +89,10 @@ require ("../estructura/sidebar.php");
                         <tbody id="TBody">
                             <tr id="TRow" class="fila-fija">
                                 <td>
-                                    <input required type="text" class="form-control" placeholder="Descripcion" name="descripcion[]" autocomplete="off">
+                                    <input required type="text" class="descripcion form-control" placeholder="Descripcion" name="descripcion[]" autocomplete="off">
                                 </td>
                                 <td>
-                                    <input  type="text" class="form-control" placeholder="SKU" name="sku[]" autocomplete="off">
+                                    <input  type="text" class="sku form-control" placeholder="SKU" name="sku[]" autocomplete="off">
                                 </td>
                                 <td>
                                     <input required type="number" class="cantidad form-control" value="1" autocomplete="off" name="cantidad[]">
