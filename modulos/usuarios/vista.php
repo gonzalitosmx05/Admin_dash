@@ -1,6 +1,8 @@
 <?php 
 require ("../estructura/header.php");
 include ("modals/agregar.php");
+include ("modals/eliminar.php");
+include ("modals/user_info.php");
 require ("../estructura/sidebar.php");?>
 
 
