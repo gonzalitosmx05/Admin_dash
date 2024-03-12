@@ -11,7 +11,11 @@
                 <div class="form-group">
                     <h1 id="cliente"></h1>
                     <table class="table table-bordered table-sm" style="font-size: x-small;" id="modalTabla">                          
-                                                                        
+                        <thead class="bg-primary text-light">
+                        </thead>
+                        <tbody>
+
+                        </tbody>                                       
                     </table>   
                 </div>                                                
             </div>
