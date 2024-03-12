@@ -1,63 +1,63 @@
 
 $(document).ready(function(){
 
-//Funcion para actualizar totales generales de la tabla y del presupuesto total
-function actualizarTotal(){
-  var total = 0;
-  $('#tabla tbody tr').each(function(){
-    total += parseFloat($(this).find('.subtotal').val()) || 0;    
-  });
-
-  $('#subtotalGeneral').val(total.toFixed(2));
-  $('#ivaGeneral').val((total*.08).toFixed(2));
-  $('#totalGeneral').val(((total*.08)+total).toFixed(2));
-}
-
-//Funcion para calcular los subtotales de cada fila
-$('#tabla tbody').on('change','.cantidad, .precio',function(){
-  var fila = $(this).closest('tr');
-  var cantidad = parseFloat(fila.find('.cantidad').val()) || 0;
-  var precio = parseFloat(fila.find('.precio').val()) || 0;
-  var subtotal = cantidad * precio;
-  fila.find('.subtotal').val(subtotal.toFixed(2));
-  actualizarTotal();
-});
-
-//Boton para agregar nueva fila en tabla 
-$('#agregar_producto').click(function(){
-    let plantillaFila = `
-      <tr id="TRow" class="fila-fija">
-        <td>
-          <input name="descripcion[]" required type="text" class="form-control" placeholder="Descripcion" autocomplete="off">
-        </td>
-        <td>
-          <input name="sku" type="text" class="form-control" placeholder="SKU" autocomplete="off">
-        </td>
-        <td>
-          <input name="cantidad[]" required type="number" class="cantidad form-control" value="1" autocomplete="off">
-        </td>
-        <td>
-          <input name="precio[]" required type="number" class="precio form-control" placeholder="0" autocomplete="off">
-        </td>
-        <td>
-          <input name="subtotal[]" disabled type="text" class="subtotal form-control" placeholder="0" autocomplete="off">
-        </td>
-        <td>
-          <button type="button" class="eliminarFila btn btn-danger">
-            <i class="fas fa-times"></i>
-          </button>
-        </td>`;
-    
-    $('#tabla tbody').append($.parseHTML(plantillaFila));    
-
+  //Funcion para actualizar totales generales de la tabla y del presupuesto total
+  function actualizarTotal(){
+    var total = 0;
+    $('#tabla tbody tr').each(function(){
+      total += parseFloat($(this).find('.subtotal').val()) || 0;    
+    });
+  
+    $('#subtotalGeneral').val(total.toFixed(2));
+    $('#ivaGeneral').val((total*.08).toFixed(2));
+    $('#totalGeneral').val(((total*.08)+total).toFixed(2));
+  }
+  
+  //Funcion para calcular los subtotales de cada fila
+  $('#tabla tbody').on('change','.cantidad, .precio',function(){
+    var fila = $(this).closest('tr');
+    var cantidad = parseFloat(fila.find('.cantidad').val()) || 0;
+    var precio = parseFloat(fila.find('.precio').val()) || 0;
+    var subtotal = cantidad * precio;
+    fila.find('.subtotal').val(subtotal.toFixed(2));
     actualizarTotal();
-});
-
-//Eliminar fila de la tabla (se uso un on click ya que es mas robusto la funcion click directa da fallos)
-$('#tabla tbody').on('click','.eliminarFila',function(){
-  $(this).closest('tr').remove();
-  actualizarTotal();
-});
-
-
-});
+  });
+  
+  //Boton para agregar nueva fila en tabla 
+  $('#agregar_producto').click(function(){
+      let plantillaFila = `
+        <tr id="TRow" class="fila-fija">
+          <td>
+            <input name="descripcion[]" required type="text" class="form-control" placeholder="Descripcion" autocomplete="off">
+          </td>
+          <td>
+            <input name="sku" type="text" class="form-control" placeholder="SKU" autocomplete="off">
+          </td>
+          <td>
+            <input name="cantidad[]" required type="number" class="cantidad form-control" value="1" autocomplete="off">
+          </td>
+          <td>
+            <input name="precio[]" required type="number" class="precio form-control" placeholder="0" autocomplete="off">
+          </td>
+          <td>
+            <input name="subtotal[]" disabled type="text" class="subtotal form-control" placeholder="0" autocomplete="off">
+          </td>
+          <td>
+            <button type="button" class="eliminarFila btn btn-danger">
+              <i class="fas fa-times"></i>
+            </button>
+          </td>`;
+      
+      $('#tabla tbody').append($.parseHTML(plantillaFila));    
+  
+      actualizarTotal();
+  });
+  
+  //Eliminar fila de la tabla (se uso un on click ya que es mas robusto la funcion click directa da fallos)
+  $('#tabla tbody').on('click','.eliminarFila',function(){
+    $(this).closest('tr').remove();
+    actualizarTotal();
+  });
+  
+  
+  });
