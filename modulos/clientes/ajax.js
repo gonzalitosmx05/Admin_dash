@@ -1,6 +1,7 @@
 $(function(){
 
     cargaClientes();
+    eliminarClient();
 
     //Registrar persona
     $("#clienteForm").submit(e => {
@@ -15,16 +16,16 @@ $(function(){
 
         $.ajax({
             url:"funciones/registrar.php",
-            data:dataPost,
+            data: dataPost,
             type: "POST",
             success: function(response){
                 if(!response.error){
                     $("#clienteForm").trigger("reset");
                     $("#agregarCliente").modal("toggle");
+                    console.log(dataPost);
                 }
             }
         });
-
     });
     
     //Registar Domicilio
@@ -77,7 +78,7 @@ $(function(){
                             <button class="btn btn-warning cliente-item " data-toggle="modal" data-target="#infoCliente">
                                 <i class="fa-solid fa-info"></i>
                             </button>
-                            <button class="btn btn-danger persona-delete">
+                            <button type="submit" id="delet" data-id="${cliente.id}" class="btn btn-danger persona-delete" data-toggle="modal" data-target="#delet_client">
                                 <i class="fa-solid fa-xmark"></i>                            
                             </button>
                         </td>
@@ -86,9 +87,31 @@ $(function(){
                 });
                 $("#registros").html(plantilla);
                 
+                $("#registros").on("click", "#delet", function () {
+                    clientId = $(this).attr("data-id");
+                    console.log(clientId);
+                    eliminarClient(clientId);
+                });
             }
         });
     };
+
+    //Eliminar Cliente
+    function eliminarClient(clientId){
+        $("#delet_client").submit(function(){
+            $.ajax({
+                url:"funciones/eliminarCliente.php",
+                type:"POST",
+                data:{clientId:clientId},
+                success: function(res){
+                    if(!res.error){
+                        console.log(res);
+                    }
+                }
+            })
+        })
+    }
+
     //Informacion del Cliente
     $(document).on("click",".cliente-item",() => {
         const element = $(this)[0].activeElement.parentElement.parentElement;

@@ -18,7 +18,7 @@
               <input type="text" class="form-control" id="telefonoClienteInfo" placeholder="Telefono">
           </div>     
           <div class="form-group">
-              <label class="d-block text-center" for="telefonoUsuarioInfo">Telefono 2</label>
+              <label class="d-block text-center" for="telefonoClienteInfo">Telefono 2</label>
               <input type="text" class="form-control" id="telefono2ClienteInfo" placeholder="Telefono 2">
           </div>                
           <div class="form-group">

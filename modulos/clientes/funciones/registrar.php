@@ -8,7 +8,8 @@ if(isset($_POST["nombre"])){
     $telefono2Cliente = $_POST["telefono2"];
     $correoCliente = $_POST["correo"];
 
-    $SQL = "INSERT INTO clientes (nombre,telefono,telefono_2,correo) VALUES ('$nombreCliente','$telefonoCliente','$telefono2Cliente','$correoCliente')";
+    $SQL = "INSERT INTO clientes (nombre,telefono,telefono_2,correo) 
+    VALUES ('$nombreCliente','$telefonoCliente','$telefono2Cliente','$correoCliente')";
     $resultado = mysqli_query($conexion, $SQL);
 
     if(!$resultado){

@@ -9,7 +9,6 @@ if($_POST["userId"]){
     $query = mysqli_query($conexion,$sql);
 
     
-    header('Location: ../views/usuarios.php');
 
     echo "ID del boton recivido: $userId";
 }else{

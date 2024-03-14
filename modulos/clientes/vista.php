@@ -3,6 +3,7 @@
 require ("../estructura/header.php");
 include("funciones/cargarClientes.php");
 include ("modal/info_cliente.php");
+include ("modal/eliminar.php");
 include ("modal/agregar.php");
 include ("modal/domicilio.php");
 require ("../estructura/sidebar.php");?>

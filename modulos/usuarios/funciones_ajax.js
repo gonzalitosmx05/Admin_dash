@@ -21,6 +21,7 @@ $(function(){
             type: "POST",
             success: function(response){
                 if(!response.error){
+                    cargaUsuarios();
                     $("#usuarioForm").trigger("reset");
                     $("#agregarUsuario").modal("toggle");
                     console.log(dataPost);
@@ -58,7 +59,7 @@ $(function(){
                 });
                 $("#registros").html(plantilla);
 
-                $("#registros").on("click", "#info", function () {
+               $("#registros").on("click", "#info", function () {
                     userId = $(this).attr("data-id");
                     infoUser(userId);                
                 });
