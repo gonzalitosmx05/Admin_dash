@@ -1,6 +1,6 @@
 <nav class="sidebar ">
     <div class="nav-header">
-      <img src="../../assets/imagenes/logo_2.png" class="logo"></p>
+      <img src="../../assets/imagenes/Recurso5.png" class="logo"></p>
       <i class="bx bx-menu-alt-right btn-menu"></i>
     </div>
     <div>

@@ -75,11 +75,11 @@ require ("../estructura/sidebar.php");
                 <div class="card-body">
                     <table class="table" id="tabla">
                         <thead class="bg-primary text-white">                            
-                                <th scope="col" style="width: 600px;">Descripcion</th>
-                                <th scope="col" style="width: 200px;">SKU</th>
-                                <th scope="col" style="width: 200px;">Cantidad</th>
-                                <th scope="col" style="width: 200px;">P.Unitario</th>
-                                <th scope="col" style="width: 200px;">Subtotal</th>
+                                <th scope="col" style="width: 45%;">Descripcion</th>
+                                <th scope="col" style="width: 13.75%;">SKU</th>
+                                <th scope="col" style="width: 13.75%">Cantidad</th>
+                                <th scope="col" style="width: 13.75%">P.Unitario</th>
+                                <th scope="col" style="width: 13.75%">Subtotal</th>
                                 <th style="width: 80px;">
                                     <button type="button" id="agregar_producto" class="btn btn-success">
                                         <i class="fas fa-plus"></i>

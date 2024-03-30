@@ -79,11 +79,11 @@ $(document).ready(function(){
 
 
     let encabezados = `                                  
-      <th scope="col">Descripcion</th>
-      <th scope="col">SKU</th>
-      <th scope="col" class='text-center'>Cantidad</th>
-      <th scope="col" class="text-center">P.Unitario</th>
-      <th scope="col" class="text-center">Subtotal</th>                                 
+      <th scope="col" style="width: 45%;">Descripcion</th>
+      <th scope="col" style="width: 13.75%;">SKU</th>
+      <th scope="col" style="width: 13.75%;" class='text-center'>Cantidad</th>
+      <th scope="col" style="width: 13.75%;" class="text-center">P.Unitario</th>
+      <th scope="col" style="width: 13.75%;" class="text-center">Subtotal</th>                                 
     `;
 
     $('#modalTabla thead').append($.parseHTML(encabezados));
@@ -99,7 +99,7 @@ $(document).ready(function(){
       $('#modalTabla tbody').append($.parseHTML(plantilla));
     });
 
-    console.log(datos);
+    console.log('Si actualizo');
   });
 
 
