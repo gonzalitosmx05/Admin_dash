@@ -9,8 +9,17 @@
             </div>
             <div class="modal-body">                                                           
                 <div class="form-group">
-                    <div class="datosEncabezado d-flex mb-3">
-                        <div class="datos_cliente flex-grow-100">                            
+                    <div id="designHeader" class="d-flex flex-row justify-content-between mb-2">
+                        <div id="logoHeader" class="w-auto">
+                            <img src="../../assets/imagenes/LogoTipoBanner.png" style="width: 300px;">
+                        </div>
+                        <div class="align-top"> 
+                            <p style="font-size: xx-large;font-weight: bold;margin:0; padding-top:0;">COTIZACION</p>                            
+                            <p style="font-size: x-small;margin:0; padding-top:0;">COTIZACION #000000</p>                            
+                        </div>
+                    </div>
+                    <div id="datosEncabezado" class="d-flex flex-row mb-3">
+                        <div class="datos_cliente col w-auto">                            
                             <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="nombreCliente">Cliente:</p>
                             <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="contactoCliente">Contacto:</p>
                             <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="direccionCliente">Direccion:</p>
@@ -18,13 +27,15 @@
                             <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="telefonoCliente">Telefono:</p>
                             <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="correoCliente">Correo:</p>
                         </div>
-                        <div class="vigencias">
-                            <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="fechaEmision">Fecha:</p>
-                            <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="fechaVigencia">Vigencia:</p>
-                            <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="agente">Agente:</p>
-                        </div>
-                        <div class="Leyenda_Empresa">
-                            <img src="../../assets/imagenes/Leyenda.png" style="width:60%;">
+                        <div class="col d-flex flex-row  justify-content-end">
+                            <div class="vigencias">
+                                <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="fechaEmision">Fecha:</p>
+                                <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="fechaVigencia">Vigencia:</p>
+                                <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="agente">Agente:</p>
+                            </div>
+                            <div class="Leyenda_Empresa w-auto">
+                                <img src="../../assets/imagenes/Leyenda.png" style="width: 130px;">
+                            </div>
                         </div>
                     </div>
 
@@ -38,6 +49,19 @@
                 </div>                                                
             </div>
             <div class="modal-footer">
+                 <button id="Save" class="btn btn-warning">
+                    <i class="fa-solid fa-print"></i>
+                    Guardar
+                </button>    
+                <button id="Save" class="btn btn-success">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Guardar
+                </button>     
+                <button id="Save" class="btn btn-primary">
+                    <i class="fa-solid fa-download"></i>
+                    Guardar y Descargar
+                </button>  
+                   
                 
             </div>
         </div>
