@@ -45,7 +45,16 @@
                         <tbody>
 
                         </tbody>                                       
-                    </table>   
+                    </table>  
+                    <div id="totales" class="text-right" style="margin-bottom:10vh;">
+                        <p class="m-0" style="font-size: x-small;">SUBTOTAL:$</p>
+                        <p class="m-0" style="font-size: x-small;">IVA:$</p>
+                        <p class="m-0" style="font-size: x-small;">TOTAL MXN:$</p>
+                    </div> 
+                    <div class="row" id="Terminos y condiciones">
+                        <textarea class="form-control" rows="5" style="font-size: x-small;width:80%;"></textarea>
+                        <img src="../../assets/imagenes/qrDead.png" style="width: 20%;" >
+                    </div>                    
                 </div>                                                
             </div>
             <div class="modal-footer">

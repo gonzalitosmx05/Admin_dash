@@ -161,8 +161,9 @@ require ("../estructura/sidebar.php");
                 <div class="card col mx-2">
                     <div class="card-header">
                         Imagenes de Referencia
+                        
                     </div>            
-                    <textarea class="form-control" aria-label="With textarea" rows="10"></textarea>
+                    <textarea class="form-control" aria-label="With textarea" rows="10">Opcion en Desarrollo</textarea>
                 </div>
             </div>
 

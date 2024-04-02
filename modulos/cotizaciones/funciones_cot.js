@@ -93,14 +93,20 @@ $(document).ready(function(){
         <td>${fila.descripcion}</td>
         <td>${fila.sku}</td>
         <td class='text-center'>${fila.cantidad}</td>
-        <td class='text-center'>${fila.precio}</td>
-        <td class='text-center'>${fila.subtotal}</td>
+        <td class='text-center'>$${fila.precio}</td>
+        <td class='text-center'>$${fila.subtotal}</td>
       </tr>`;
       $('#modalTabla tbody').append($.parseHTML(plantilla));
     });
 
-    console.log('Si actualizo');
+    consultarCLiente();
   });
+
+  //Obtenemos Datos del Cliente
+  function consultarCLiente(){
+    let clientName = $("#selectCliente").val();
+    console.log(clientName);
+  }
 
 
 
