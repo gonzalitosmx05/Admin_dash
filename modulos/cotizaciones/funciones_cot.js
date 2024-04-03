@@ -105,7 +105,16 @@ $(document).ready(function(){
   //Obtenemos Datos del Cliente
   function consultarCLiente(){
     let clientName = $("#selectCliente").val();
-    console.log(clientName);
+    $.ajax({
+      url:'funciones/consultaCliente.php',
+      type:'POST',
+      data:{id:clientName},
+      success: function(response){
+        if(!response.error){          
+            
+        }
+    }
+    });
   }
 
 
