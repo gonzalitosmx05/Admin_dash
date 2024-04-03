@@ -29,9 +29,9 @@
                         </div>
                         <div class="col d-flex flex-row  justify-content-end">
                             <div class="vigencias">
-                                <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="fechaEmision">Fecha:</p>
-                                <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="fechaVigencia">Vigencia:</p>
-                                <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="agente">Agente:</p>
+                                <p class="fw-bold lh-1 m-0 text-right" style="font-size: x-small;" id="fechaEmision">Fecha:</p>
+                                <p class="fw-bold lh-1 m-0 text-right" style="font-size: x-small;" id="fechaVigencia">Vigencia:</p>
+                                <p class="fw-bold lh-1 m-0 text-right" style="font-size: x-small;" id="agente">Agente:</p>
                             </div>
                             <div class="Leyenda_Empresa w-auto">
                                 <img src="../../assets/imagenes/Leyenda.png" style="width: 130px;">
@@ -47,28 +47,28 @@
                         </tbody>                                       
                     </table>  
                     <div id="totales" class="text-right" style="margin-bottom:10vh;">
-                        <p class="m-0" style="font-size: x-small;">SUBTOTAL:$</p>
-                        <p class="m-0" style="font-size: x-small;">IVA:$</p>
-                        <p class="m-0" style="font-size: x-small;">TOTAL MXN:$</p>
+                        <p class="m-0" style="font-size: x-small;" id="subtotalPreview">SUBTOTAL:$</p>
+                        <p class="m-0" style="font-size: x-small;" id="ivaPreview">IVA:$</p>
+                        <p class="m-0" style="font-size: x-small;" id="totalPreview">TOTAL MXN:$</p>
                     </div> 
-                    <div class="row" id="Terminos y condiciones">
+                    <div class="row m-2" id="Terminos y condiciones">
                         <textarea class="form-control" rows="5" style="font-size: x-small;width:80%;"></textarea>
                         <img src="../../assets/imagenes/qrDead.png" style="width: 20%;" >
                     </div>                    
                 </div>                                                
             </div>
             <div class="modal-footer">
-                 <button id="Save" class="btn btn-warning">
+                 <button id="printAndSaveButton" class="btn btn-warning">
                     <i class="fa-solid fa-print"></i>
-                    Guardar
+                    Imprimir & Guardar
                 </button>    
-                <button id="Save" class="btn btn-success">
+                <button id="saveButton" class="btn btn-success">
                     <i class="fa-solid fa-floppy-disk"></i>
                     Guardar
                 </button>     
-                <button id="Save" class="btn btn-primary">
+                <button id="downloadSave" class="btn btn-primary">
                     <i class="fa-solid fa-download"></i>
-                    Guardar y Descargar
+                    Descargar y Guardar
                 </button>  
                    
                 

@@ -20,6 +20,7 @@ require ("../estructura/sidebar.php");
         <div class="card-body">
             <div class="d-flex justify-content-center">                 
                 <p>Generar Cotizacion </p>
+                <p hidden id="agenteName"><?php echo $_SESSION['name']; ?></p>
             </div>             
             <div class="card mb-2">
                 <div class="card-header">
