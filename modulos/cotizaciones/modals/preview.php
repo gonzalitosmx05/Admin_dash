@@ -39,13 +39,15 @@
                         </div>
                     </div>
 
-                    <table class="table table-bordered table-sm" style="font-size: x-small;" id="modalTabla">                          
-                        <thead class="bg-primary text-light">
-                        </thead>
-                        <tbody>
-
-                        </tbody>                                       
-                    </table>  
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-sm" style="font-size: x-small;" id="modalTabla">                          
+                            <thead class="bg-primary text-light">
+                            </thead>
+                            <tbody>
+    
+                            </tbody>                                       
+                        </table>  
+                    </div>
                     <div id="totales" class="text-right" style="margin-bottom:10vh;">
                         <p class="m-0" style="font-size: x-small;" id="subtotalPreview">SUBTOTAL:$</p>
                         <p class="m-0" style="font-size: x-small;" id="ivaPreview">IVA:$</p>
