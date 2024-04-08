@@ -20,6 +20,7 @@ require ("../estructura/sidebar.php");
         <div class="card-body">
             <div class="d-flex justify-content-center">                 
                 <p>Generar Cotizacion </p>
+                <p id="folioCotizacion"></p>                
                 <p hidden id="agenteName"><?php echo $_SESSION['name']; ?></p>
             </div>             
             <div class="card mb-2">
@@ -157,7 +158,7 @@ require ("../estructura/sidebar.php");
                         <span>Notas</span>
                         
                     </div>                                
-                    <textarea class="form-control" aria-label="With textarea" rows="10"></textarea>
+                    <textarea id="termsConditions" class="form-control" aria-label="With textarea" rows="10"></textarea>
                 </div>
                 <div class="card col mx-2">
                     <div class="card-header">

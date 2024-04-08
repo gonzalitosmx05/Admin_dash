@@ -15,7 +15,8 @@
                         </div>
                         <div class="align-top"> 
                             <p style="font-size: xx-large;font-weight: bold;margin:0; padding-top:0;">COTIZACION</p>                            
-                            <p style="font-size: x-small;margin:0; padding-top:0;">COTIZACION #000000</p>                            
+                            <p id="folioCotizacioPreview" style="font-size: x-small;margin:0; padding-top:0;">COTIZACION #000000</p>                            
+                            <p hidden id="folioCotizacioPreviewHiden" style="font-size: x-small;margin:0; padding-top:0;"></p>                            
                         </div>
                     </div>
                     <div id="datosEncabezado" class="d-flex flex-row mb-3">
@@ -54,7 +55,7 @@
                         <p class="m-0" style="font-size: x-small;" id="totalPreview">TOTAL MXN:$</p>
                     </div> 
                     <div class="row m-2" id="Terminos y condiciones">
-                        <textarea class="form-control" rows="5" style="font-size: x-small;width:80%;"></textarea>
+                        <textarea disabled id="terminosPreview" class="form-control" rows="5" style="font-size: x-small;width:80%;color: black; background-color: white; "></textarea>
                         <img src="../../assets/imagenes/qrDead.png" style="width: 20%;" >
                     </div>                    
                 </div>                                                

@@ -1,6 +1,9 @@
 
 $(document).ready(function(){
 
+  
+ 
+
   //Funcion para actualizar totales generales de la tabla y del presupuesto total
   function actualizarTotal(){
     var total = 0;
@@ -67,8 +70,36 @@ $(document).ready(function(){
     consultarCLiente();
     fechasVigencias();
     obtenerAgente();
+    terminosCondiciones();
+    ultimaCotizacion();
 
   });
+
+  //Obtener el ultimo registro de la tabla cotizaciones
+  function ultimaCotizacion(){
+    $.ajax({
+      url: "funciones/consulta_ultimo_reg.php",
+      type: "GET",
+      success: function(response){         
+        let valor = 1 +  parseInt(response);
+        let valorTexto = addNumberFill(String(valor));        
+        $('#folioCotizacioPreview').text("COTIZACION #"+valorTexto);   
+        $('#folioCotizacioPreviewHiden').text(valorTexto);
+      }
+    });
+
+    function addNumberFill(valor){
+      if(valor.length < 11){
+        for(var i = valor.length; i <= 10; i++)
+        {
+          valor = "0" + valor;
+        }
+      }
+      return valor;
+  
+    }
+
+  }
 
   //Clonar la tabla y pasa a preview
   function clonarTabla(){
@@ -129,6 +160,10 @@ $(document).ready(function(){
             $('#telefonoCliente').text("Telefono: "+dato.telefono);
             $('#correoCliente').text("Correo: "+dato.correo);
           });
+        }
+        if(response.error == true){
+          console.log("Error al hacer algo");
+          return
         }
     }
     });
@@ -195,12 +230,20 @@ $(document).ready(function(){
     $('#totalPreview').text("TOTAL: $"+totalGen);
   }
 
+  //Obtenemos los terminos y conficiones
+  function terminosCondiciones(){
+    let terminos = $("#termsConditions").val();   
+    $('#terminosPreview').val(terminos);       
+  }
+
   $('#downloadSave').on('click',function(){
     generarPDFAndDownload();   
   });
   
+  
+
   //Funcion para Generar Archivo PDF y Descargarlo
-  function generarPDFAndDownload(){
+  function generarPDFAndDownload(){ 
 
     function fechasVigencias(){    
       // Obtener la fecha actual
@@ -268,12 +311,23 @@ $(document).ready(function(){
       let clientMail = $('#correoCliente').text();
       return [clientName,clientPhone,clientMail];
     }
+    
+    function ultimaCotizacion(){      
+      return ($("#folioCotizacioPreviewHiden").text());
+    }
+
+    //Obtenemos los terminos y conficiones
+    function terminosCondiciones(){
+      let terminos = $("#termsConditions").val();   
+      $('#terminosPreview').val(terminos);   
+      return(terminos);
+    }
 
     //Importamos la libreria 
     const {jsPDF} = window.jspdf;
     const Qrcode = window.Qrcode;
 
-    let folio = "000012005";
+    let folio = ultimaCotizacion();
     let fechas = fechasVigencias();
     let fechaEmision = fechas[0];
     let fechaTerminacion = fechas[1];
@@ -291,6 +345,9 @@ $(document).ready(function(){
     let clientName = datosCLiente[0];
     let clientPhone = datosCLiente[1];
     let clientMail = datosCLiente[2];
+
+    //Terminos y condiciones
+    let terminos = terminosCondiciones();
     
 
     //Importamos Imagenes 
@@ -405,7 +462,7 @@ $(document).ready(function(){
         doc.setDrawColor(borderColor[0], borderColor[1], borderColor[2]);
 
         doc.setFontSize(8);
-        doc.cell(data.settings.margin.left, pageHeight - 130, pageSize.width-120, 100, "Estos son los terminos y condiciones relacionados a la cotizacion o tambien conocidos como las notas");
+        doc.cell(data.settings.margin.left, pageHeight - 130, pageSize.width-120, 100, terminos);
        
         //Creamos Codigo QR
         const codigoQR = new QRCode(document.createElement("div"), {
