@@ -32,7 +32,7 @@ $(function(){
     $("#domicilioForm").submit(e => {
         e.preventDefault();
 
-        const dataPost = {
+        const dataPost = {   
             cliente:$("#selectCliente").val(),
             calle:$("#calleDomicilio").val(),
             exterior:$("#exteriorDomicilio").val(),

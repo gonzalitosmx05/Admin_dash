@@ -27,7 +27,14 @@
           <span class="title">Cotizaciones</span>
         </a>
         <span class="tooltip">Cotizaciones</span>
-      </li>      
+      </li>  
+      <li>
+        <a href="../contratos/vista.php">  
+        <i class='bx bx-spreadsheet'></i>
+          <span class="title">Contratos</span>
+        </a>
+        <span class="tooltip">Contratos</span>
+      </li>    
       <li>
         <a href="../clientes/vista.php">  
           <i class='bx bxs-group'></i>

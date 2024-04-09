@@ -7,6 +7,9 @@ include ("modals/DireClient.php");
 require ("../estructura/sidebar.php");
 ?>
 
+    <!--jsPDF-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 
 <div class="p-2">
     <div class="card">
@@ -26,7 +29,7 @@ require ("../estructura/sidebar.php");
                             <?php while($var = mysqli_fetch_row($result)){?>
                             <option value="<?php echo $var[0]?>"><?php echo $var[1]?></option>
                             <?php }?>
-                        </select>                    
+                        </select>
                     </div>               
                     <div class="btn-group dropright mt-4 ml-3">
                         <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,13 +43,55 @@ require ("../estructura/sidebar.php");
                             </button>                            
                             <button class="dropdown-item" type="button" data-toggle="modal" data-target="#DireClient">
                                 <i class="fa-brands fa-searchengin"></i>
-                                Escojer Direccion
+                                Registrar Direccion
                             </button>
                         </div>
                     </div>
-                </div>
-            </div>
 
+                    
+                </div>
+                
+            <div class="form-group w-50 mt-2">                    
+                        <label class="d-block text-center" for="clientDirec">Calle</label>
+                        <select name="state" id="clientDirec" style="width: 100%;" >
+                        <option >Selecciona Domicilio</option>
+                        </select>
+              </div>    
+          <div class="form-group d-flex">
+          <div class="mr-3">
+                  <label for="interiorDirectContrato">No.Interior</label>
+                  <input type="text" class="form-control" id="interiorDirectContrato" placeholder="No.Int">
+              </div>
+              <div class="mr-3">
+                  <label for="exteriorDirectContrato">No.Exterior</label>
+                  <input type="text" class="form-control" id="exteriorDirectContrato" placeholder="No.Ext">
+              </div>
+            <div class="form-group mr-3">
+              <label class="d-block text-center" for="coloniaDirectContrato">Colonia</label>
+                <input type="text" class="form-control" id="coloniaDirectContrato" placeholder="Colonia">
+            </div> 
+            <div class="form-group mr-3">
+              <label class="d-block text-center" for="ciudadDirectContrato">Ciudad</label>
+              <input type="text" class="form-control" id="ciudadDirectContrato" placeholder="Ciudad">
+            </div>
+          </div>      
+          <div class="d-flex">
+            <div class="form-group mr-1">
+              <label class="d-block text-center" for="estadoDirectContrato">Estado</label>
+              <input type="text" class="form-control" id="estadoDirectContrato" placeholder="Estado">
+            </div>      
+            <div class="form-group mr-5">
+              <label class="d-block text-center" for="paisDirectContrato">Pais</label>
+                <input type="text" class="form-control" id="paisDirectContrato" placeholder="Pais" value="Mexico">
+            </div> 
+            
+            <label class="d-block text-center" for="referenciaDirectContrato">Referencias de domicilio</label>
+            <textarea id="referenciaDirectContrato"  class="form-control" aria-label="With textarea" rows="5"></textarea>
+          
+          </div>            
+        </div>
+            </div>
+            
             <div class="cadr-mb2">  <div class="card mb-2">
                 <div class="card-header">
                     Informacion Del Equipo
@@ -62,13 +107,13 @@ require ("../estructura/sidebar.php");
                         <tbody id="TBody">
                             <tr id="TRow" class="fila-fija">
                                 <td>
-                                    <input  type="text" class=" form-control" placeholder="Marca" name="sku[]" autocomplete="off">
+                                    <input  type="text" class=" form-control" placeholder="Marca" id="marca" name="sku[]" autocomplete="off">
                                 </td>
                                 <td>
-                                    <input type="text" class=" form-control" placeholder="Modelo" autocomplete="off">
+                                    <input type="text" class=" form-control" placeholder="Modelo" id="modelo" autocomplete="off">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" placeholder="No. Serie" autocomplete="off" >
+                                    <input type="text" class="form-control" placeholder="No. Serie" id="nserie" autocomplete="off" >
                                 </td>
                             </tr>                        
                         </tbody>
@@ -195,7 +240,7 @@ require ("../estructura/sidebar.php");
                         </div>                                         
                     </div>
                     <div class="d-flex justify-content-end mt-1 mr-3">
-                        <button id="btnPreview"  type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalpreview">>
+                        <button id="pdfButton"  type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalpreview">>
                             <i class="fa-solid fa-download"></i>
                             Generar Contrato
                         </button>                               
@@ -211,7 +256,7 @@ require ("../estructura/sidebar.php");
                         <span>Pago Del Equipo</span>                   
                     </div>                                
                     <div class="form-group w-50 mt-2">                    
-                        <select name="state" id="selectCliente" style="width: 100%;">
+                        <select name="state" id="selectpago" style="width: 100%;">
                         <option >Efectivo</option>
                         <option >Tarjeta</option>
                         <option >Cheque</option>
@@ -228,13 +273,13 @@ require ("../estructura/sidebar.php");
                         <tbody id="TBody">
                             <tr id="TRow" class="fila-fija">
                                 <td>
-                                    <input  type="text" class="sku form-control"  name="sku[]" autocomplete="off">
+                                    <input  type="text" class="sku form-control"  id="A1" name="sku[]" autocomplete="off">
                                 </td>
                                 <td>
-                                    <input type="text" class="cantidad form-control"  autocomplete="off">
+                                    <input type="text" class="cantidad form-control"  id="A2" autocomplete="off">
                                 </td>
                                 <td>
-                                    <input type="text" class="precio form-control"  autocomplete="off" >
+                                    <input type="text" class="precio form-control" id="balance" autocomplete="off" >
                                 </td>
                             </tr>                        
                         </tbody>
@@ -245,7 +290,7 @@ require ("../estructura/sidebar.php");
                     <div class="card-header">
                         Notas
                     </div>            
-                    <textarea class="form-control" aria-label="With textarea" rows="10"></textarea>
+                    <textarea class="form-control" aria-label="With textarea" id="notas" rows="10"></textarea>
                 </div>
             </div>
 
@@ -253,13 +298,13 @@ require ("../estructura/sidebar.php");
         </div>
     </div>
 </div>
-
+*/
 
 
 <!--JQuery-->
 <script src="../../assets/js/jquery-3.7.1.min.js"></script>
-
 <script src="ajax.js"></script>
+<script src="contratoPDF.js"></script>
 
 
 

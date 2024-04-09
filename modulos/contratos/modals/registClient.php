@@ -1,43 +1,36 @@
-<div id="Registclient" class="modal" role="dialog">
+<div id="Registclient" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Nuevo usuario</h5>
+        <h5 class="modal-title">Nuevo Cliente</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="" id="usuarioForm">
-        <div class="modal-body" >        
+      <form action="" id="clienteForm">
+        <div class="modal-body">        
           <div class="form-group">
-            <label class="d-block text-center" for="nombreUsuario">Nombre completo</label>
-              <input type="text" class="form-control" id="nombreUsuario" placeholder="Nombre">
+              <label class="d-block text-center" for="nombreCliente">Nombre o Razon Social</label>
+              <input required type="text" class="form-control" id="nombreCliente" placeholder="Nombre">
           </div>    
           <div class="form-group">
-            <label class="d-block text-center" for="telefonoUsuario">Telefono</label>
-              <input type="text" class="form-control" id="telefonoUsuario" placeholder="Telefono">
-          </div>       
+              <label class="d-block text-center" for="telefonoCliente">Telefono</label>
+              <input type="text" class="form-control" id="telefonoCliente" placeholder="Telefono">
+          </div>     
           <div class="form-group">
-            <label class="d-block text-center" for="nivelUsuario">Nivel de usuario</label>
-            <select class="form-control" id="nivelUsuario" name="filtro">
-                    <option value="administrador">Administrador</option> 
-                    <option value="usuario">Usuario Normal</option>                           
-              </select>
-          </div>
+              <label class="d-block text-center" for="telefono2Cliente">Telefono 2</label>
+              <input type="text" class="form-control" id="telefono2Cliente" placeholder="Telefono 2">
+          </div>                
           <div class="form-group">
-            <label class="d-block text-center" for="usuarioUsuario">Usuario</label>
-              <input type="text" class="form-control" id="usuarioUsuario" placeholder="Usuario">
-          </div>        
-          <div class="form-group">
-            <label class="d-block text-center" for="passUsuario">Password</label>
-              <input type="password" class="form-control" id="passUsuario" placeholder="Password">
-          </div>          
+              <label class="d-block text-center" for="correoCliente">Correo</label>
+              <input type="email" class="form-control" id="correoCliente" placeholder="Correo">
+          </div>                    
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary">Guardar</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-        </div>
-      </form>
-    </div>
+        </div>      
+      </div>
+    </form>
   </div>
 </div>
