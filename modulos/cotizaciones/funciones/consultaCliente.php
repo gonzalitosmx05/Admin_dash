@@ -1,15 +1,19 @@
 <?php 
 
+
 include("../../../core/conexion.php");
 
 if(isset($_POST["id"])){
-    
+        
     $id_cliente = $_POST["id"];
-
-    $SQL = "SELECT * FROM clientes WHERE id = '$id_cliente'";
+     
+   
+    
+    $SQL = "SELECT * FROM clientes WHERE id = $id_cliente";
 
     $result = mysqli_query($conexion,$SQL);
 
+    
     $json =array();
 
     while($row = mysqli_fetch_array($result)){
@@ -23,7 +27,7 @@ if(isset($_POST["id"])){
     
     $jsonString = json_encode($json);
     echo $jsonString;
-    echo "hecho";
+    //echo "hecho";
 
 }
 
