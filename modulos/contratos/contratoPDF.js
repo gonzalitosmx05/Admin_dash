@@ -120,7 +120,7 @@ function generarPDF(){
     doc.setFontSize(10);
     //doc.rect (10, 293, 285, 15,'S');
     doc.text ("MARCA:", 130, 290);
-    doc.setFillColor(221, 227, 255 );
+    doc.setFillColor(229, 230, 241);
     doc.roundedRect (13, 293, 278, 15, 3, 3,'F');
     doc.text(marca, 130, 302);
     //doc.rect (10, 280, 285, 15,'S');
@@ -227,9 +227,11 @@ function generarPDF(){
 
     //doc.setTextColor(255,0,0);
     doc.setFontSize(10);
-    doc.text ("ANTICIPO #1", 25, 595);
-    doc.text ("ANTICIPO #2", 125, 595);
-    doc.text ("BALANCE", 225, 595);
+    doc.text ("ANTICIPO #1", 25, 600);
+    doc.text ("ANTICIPO #2", 125, 600);
+    doc.text ("BALANCE", 225, 600);
+    doc.text ("FORMA DE PAGO", 22, 665);
+
 
     doc.setFontSize(15);
     doc.text ("$", 14, 623);
@@ -242,7 +244,7 @@ function generarPDF(){
 
     doc.setTextColor(0);
     doc.setFillColor(0);
-    doc.roundedRect (13, 653, 100, 15,2,2,'F'); //FORMA DE PAGO
+    doc.roundedRect (13, 653, 100, 15,2,2,'S'); //FORMA DE PAGO
     doc.roundedRect (125, 690, 220, 25,2,2,'S'); //FIRMA DEL CLIENTE
     doc.setFillColor(198, 197, 197);
     doc.text ("FIRMA DEL CLIENTE", 180, 710);
@@ -251,19 +253,17 @@ function generarPDF(){
     doc.text ("NOTAS:", 390, 648);
     doc.roundedRect (350, 650, 250, 60,2,2,'S'); //NOTAS
 
-    doc.setFillColor(0);
-    //doc.cell(13, 590, 90, 15,'ANTICIPO #1',0,'C', false);
-    doc.roundedRect (13, 590, 90, 15, 2, 2,'F'); //ANTICIPO 1
+    doc.roundedRect (13, 590, 90, 15, 2, 2,'S'); //ANTICIPO 1
     doc.setFontSize(12);
     doc.text(A1,36, 620);
     doc.roundedRect (13, 608, 90, 20,2,2,'S'); 
 
-    doc.roundedRect (110, 590, 90, 15, 2, 2,'F'); //ANTICIPO 2
+    doc.roundedRect (110, 590, 90, 15, 2, 2,'S'); //ANTICIPO 2
     doc.setFontSize(12);
     doc.text(A2,133, 620);
     doc.roundedRect (110, 608, 90, 20,2,2,'S'); 
 
-    doc.roundedRect (207, 590, 90, 15, 2, 2,'F'); //BALANCE
+    doc.roundedRect (207, 590, 90, 15, 2, 2,'S'); //BALANCE
     doc.setFontSize(12);
     doc.text(balance,230, 620);
     doc.roundedRect (207, 608, 90, 20,2,2,'S'); 
@@ -287,23 +287,20 @@ function generarPDF(){
 
     if(text == 'Cheque'){
         doc.text ('X', 25, 710);
-        doc.setFillColor(198, 197, 197);
-        doc.roundedRect (13, 700, 30, 15, 3, 3,'F');//FORMA DE PAGO
-        doc.roundedRect (50, 700, 30, 15, 3, 3,'F');
-        doc.roundedRect (85, 700, 30, 15, 3, 3,'F');
+        doc.roundedRect (13, 700, 30, 15, 3, 3,'S');//FORMA DE PAGO
+        doc.roundedRect (50, 700, 30, 15, 3, 3,'S');
+        doc.roundedRect (85, 700, 30, 15, 3, 3,'S');
     
     }else if(text = 'Efectivo'){
         doc.text ('X', 65, 710);
-        doc.setFillColor(198, 197, 197);
-        doc.roundedRect (13, 700, 30, 15, 3, 3,'F');//FORMA DE PAGO
-        doc.roundedRect (50, 700, 30, 15, 3, 3,'F');
-        doc.roundedRect (85, 700, 30, 15, 3, 3,'F');
+        doc.roundedRect (13, 700, 30, 15, 3, 3,'S');//FORMA DE PAGO
+        doc.roundedRect (50, 700, 30, 15, 3, 3,'S');
+        doc.roundedRect (85, 700, 30, 15, 3, 3,'S');
     }else{
         doc.text ('X', 100, 710);
-        doc.setFillColor(198, 197, 197);
-        doc.roundedRect (13, 700, 30, 15, 3, 3,'F');//FORMA DE PAGO
-        doc.roundedRect (50, 700, 30, 15, 3, 3,'F');
-        doc.roundedRect (85, 700, 30, 15, 3, 3,'F');
+        doc.roundedRect (13, 700, 30, 15, 3, 3,'S');//FORMA DE PAGO
+        doc.roundedRect (50, 700, 30, 15, 3, 3,'S');
+        doc.roundedRect (85, 700, 30, 15, 3, 3,'S');
 
     }
 
