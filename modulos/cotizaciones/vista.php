@@ -3,6 +3,7 @@ session_start();
 require ("../estructura/header.php");
 include("funciones/cargarClientes.php");
 include("modals/preview.php");
+include("modals/agregar.php");
 require ("../estructura/sidebar.php");
 ?>
 <style>
@@ -59,7 +60,7 @@ require ("../estructura/sidebar.php");
                             <i class="fa-solid fa-wrench"></i>
                         </button>
                         <div class="dropdown-menu">
-                            <button class="dropdown-item" type="button">
+                            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#agregarCliente">
                                 <i class="fa-solid fa-user-plus"></i>
                                 Registrar Cliente
                             </button>                            
@@ -160,7 +161,8 @@ require ("../estructura/sidebar.php");
                         <span>Notas</span>
                         
                     </div>                                
-                    <textarea id="termsConditions" class="form-control" aria-label="With textarea" rows="10"></textarea>
+                    <textarea id="termsConditions" class="form-control" aria-label="With textarea" rows="10">-PRECIOS NO INCLUYEN IVA
+                    </textarea>
                 </div>
                 <div class="card col mx-2">
                     <div class="card-header">

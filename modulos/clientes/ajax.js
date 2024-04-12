@@ -2,18 +2,17 @@ $(function(){
 
     cargaClientes();
     eliminarClient();
+    
 
-    //Registrar persona
-    $("#clienteForm").submit(e => {
-        e.preventDefault();
-
+    $('#btnRgistrarCLiente').on('click',function(){
         const dataPost = {
             nombre:$("#nombreCliente").val(),
-            telefono:$("#telefonoCliente").val(),
+            telefono1:$("#telefonoCliente").val(),
             telefono2:$("#telefono2Cliente").val(),
             correo:$("#correoCliente").val()
         };
 
+        console.log(dataPost);
         $.ajax({
             url:"funciones/registrar.php",
             data: dataPost,
@@ -22,7 +21,7 @@ $(function(){
                 if(!response.error){
                     $("#clienteForm").trigger("reset");
                     $("#agregarCliente").modal("toggle");
-                    console.log(dataPost);
+                    console.log(response);
                 }
             }
         });
