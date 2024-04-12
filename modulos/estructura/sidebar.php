@@ -22,7 +22,7 @@
         <span class="tooltip">Cotizar</span>
       </li>
       <li>
-        <a href="">
+        <a href="../cotizaciones/cotizaciones.php">
           <i class='bx bx-archive' ></i>
           <span class="title">Cotizaciones</span>
         </a>
