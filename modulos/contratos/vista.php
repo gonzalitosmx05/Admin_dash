@@ -8,8 +8,7 @@ require ("../estructura/sidebar.php");
 ?>
 
     <!--jsPDF-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 
 <div class="p-2">
     <div class="card">
@@ -51,10 +50,11 @@ require ("../estructura/sidebar.php");
                     
                 </div>
                 
-            <div class="form-group w-50 mt-2">                    
+            <div class="form-group w-50 mt-2">       
+            <input type="hidden" id="CALLECLIENTE">             
                         <label class="d-block text-center" for="clientDirec">Calle</label>
-                        <select name="state" id="clientDirec" style="width: 100%;" >
-                        <option >Selecciona Domicilio</option>
+                        <select name="clientDirec" id="clientDirec" style="width: 100%;" >
+                        <option>Selecciona Domicilio</option>
                         </select>
               </div>    
           <div class="form-group d-flex">
@@ -130,86 +130,100 @@ require ("../estructura/sidebar.php");
                         <tbody id="TBody">
                             <tr id="TRow" class="fila-fija">
                                 <td>
-                                    <input required type="text" class="descripcion form-control" placeholder="Descripcion" name="descripcion[]" autocomplete="off">
+                                    <input required type="text" id="Desc_1" class="descripcion form-control" placeholder="Descripcion" name="descripcion[]" autocomplete="off">
                                 </td>
                                 <td>
-                                    <input required type="number" class="cantidad form-control" value="0" autocomplete="off" name="cantidad[]">
+                                    <input required type="number" id="Cant_1" class="cantidad form-control" placeholder="0" autocomplete="off" name="cantidad[]">
                                 </td>
                                 <td>
-                                    <input required type="number" class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
+                                    <input required type="number" id="PU_1" class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
                                 </td>
                                 <td>
-                                    <input disabled type="text" class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
-                                </td>
-                            </tr>
-                            <tr id="TRow" class="fila-fija">
-                                <td>
-                                    <input required type="text" class="descripcion form-control" placeholder="Descripcion" name="descripcion[]" autocomplete="off">
-                                </td>
-                                <td>
-                                    <input required type="number" class="cantidad form-control" value="0" autocomplete="off" name="cantidad[]">
-                                </td>
-                                <td>
-                                    <input required type="number" class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
-                                </td>
-                                <td>
-                                    <input disabled type="text" class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
+                                    <input disabled type="text" id="Sub_1" class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
                                 </td>
                             </tr>
                             <tr id="TRow" class="fila-fija">
                                 <td>
-                                    <input required type="text" class="descripcion form-control" placeholder="Descripcion" name="descripcion[]" autocomplete="off">
+                                    <input required type="text" id="Desc_2" class="descripcion form-control" placeholder="Descripcion" name="descripcion[]" autocomplete="off">
                                 </td>
                                 <td>
-                                    <input required type="number" class="cantidad form-control" value="0" autocomplete="off" name="cantidad[]">
+                                    <input required type="number" id="Cant_2" class="cantidad form-control" placeholder="0" autocomplete="off" name="cantidad[]">
                                 </td>
                                 <td>
-                                    <input required type="number" class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
+                                    <input required type="number" id="PU_2" class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
                                 </td>
                                 <td>
-                                    <input disabled type="text" class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
-                                </td>
-                            </tr>
-                            <tr id="TRow" class="fila-fija">
-                                <td>
-                                    <input required type="text" class="descripcion form-control" placeholder="Descripcion" name="descripcion[]" autocomplete="off">
-                                </td>
-                                <td>
-                                    <input required type="number" class="cantidad form-control" value="0" autocomplete="off" name="cantidad[]">
-                                </td>
-                                <td>
-                                    <input required type="number" class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
-                                </td>
-                                <td>
-                                    <input disabled type="text" class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
+                                    <input disabled type="text" id="Sub_2" class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
                                 </td>
                             </tr>
                             <tr id="TRow" class="fila-fija">
                                 <td>
-                                    <input required type="text" class="descripcion form-control" placeholder="Descripcion" name="descripcion[]" autocomplete="off">
+                                    <input required type="text" id="Desc_3"class="descripcion form-control" placeholder="Descripcion" name="descripcion[]" autocomplete="off">
                                 </td>
                                 <td>
-                                    <input required type="number" class="cantidad form-control" value="0" autocomplete="off" name="cantidad[]">
+                                    <input required type="number" id="Cant_3"class="cantidad form-control" placeholder="0" autocomplete="off" name="cantidad[]">
                                 </td>
                                 <td>
-                                    <input required type="number" class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
+                                    <input required type="number" id="PU_3" class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
                                 </td>
                                 <td>
-                                    <input disabled type="text" class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
+                                    <input disabled type="text" id="Sub_3" class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
                                 </td>
                             </tr>
                             <tr id="TRow" class="fila-fija">
                                 <td>
-                                    <input required type="text" class="descripcion form-control" placeholder="Descripcion" name="descripcion[]" autocomplete="off">
+                                    <input required type="text" id="Desc_4" class="descripcion form-control" placeholder="Descripcion" name="descripcion[]" autocomplete="off">
                                 </td>
                                 <td>
-                                    <input required type="number" class="cantidad form-control" value="0" autocomplete="off" name="cantidad[]">
+                                    <input required type="number" id="Cant_4" class="cantidad form-control" placeholder="0" autocomplete="off" name="cantidad[]">
                                 </td>
                                 <td>
-                                    <input required type="number" class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
+                                    <input required type="number" id="PU_4" class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
                                 </td>
                                 <td>
-                                    <input disabled type="text" class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
+                                    <input disabled type="text" id="Sub_4" class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
+                                </td>
+                            </tr>
+                            <tr id="TRow" class="fila-fija">
+                                <td>
+                                    <input required type="text" id="Desc_5"id="Desc_1"class="descripcion form-control" placeholder="Descripcion" name="descripcion[]" autocomplete="off">
+                                </td>
+                                <td>
+                                    <input required type="number" id="Cant_5"class="cantidad form-control" placeholder="0" autocomplete="off" name="cantidad[]">
+                                </td>
+                                <td>
+                                    <input required type="number" id="PU_5"class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
+                                </td>
+                                <td>
+                                    <input disabled type="text"id="Sub_5" class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
+                                </td>
+                            </tr>
+                            <tr id="TRow" class="fila-fija">
+                                <td>
+                                    <input required type="text" id="Desc_6" class="descripcion form-control" placeholder="Descripcion" name="descripcion[]" autocomplete="off">
+                                </td>
+                                <td>
+                                    <input required type="number" id="Cant_6" class="cantidad form-control" placeholder="0" autocomplete="off" name="cantidad[]">
+                                </td>
+                                <td>
+                                    <input required type="number" id="PU_6"class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
+                                </td>
+                                <td>
+                                    <input disabled type="text" id="Sub_6"class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
+                                </td>
+                            </tr> 
+                            <tr id="TRow" class="fila-fija">
+                                <td>
+                                    <input required type="text" id="Desc_7"class="descripcion form-control" placeholder="Descripcion" name="descripcion[]" autocomplete="off">
+                                </td>
+                                <td>
+                                    <input required type="number" id="Cant_7"class="cantidad form-control" placeholder="0" autocomplete="off" name="cantidad[]">
+                                </td>
+                                <td>
+                                    <input required type="number" id="PU_7"class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
+                                </td>
+                                <td>
+                                    <input disabled type="text" id="Sub_7"class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
                                 </td>
                             </tr>                        
                         </tbody>
@@ -298,7 +312,7 @@ require ("../estructura/sidebar.php");
         </div>
     </div>
 </div>
-*/
+
 
 
 <!--JQuery-->

@@ -22,6 +22,7 @@ if(isset($_POST["clientId"])){
             'interior' => $row['interior'],
             'exterior' => $row['exterior'],
             'colonia' => $row['colonia'],
+            'ciudad' => $row['ciudad'],
             'estado' => $row['estado'],
             'pais' => $row['pais'],
             'referencias' => $row['referencias'],

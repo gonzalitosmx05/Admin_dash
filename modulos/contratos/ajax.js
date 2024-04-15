@@ -176,6 +176,8 @@ $(document).ready(function(){
                     console.log(direct); 
                     direct.forEach(direc =>{
                       console.log(direc);
+                      $("#CALLECLIENTE").val(direc.calle);
+                      console.log($("#CALLECLIENTE").val());
                       $("#interiorDirectContrato").val(direc.interior);
                       console.log($("#interiorDirectContrato").val());
                       $("#exteriorDirectContrato").val(direc.exterior);

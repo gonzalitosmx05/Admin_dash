@@ -5,21 +5,90 @@ const pdfButton = document.getElementById('pdfButton');
 pdfButton.onclick = generarPDF;
 
 //Funcion para Generar Archivo PDF
-function generarPDF(){
-    //Importamos la libreria 
-    const {jsPDF} = window.jspdf;
-    //window.html2canvas = html2canvas;
-    const base64Font = 'your-bas64-encoded-font-goes-here';
+function generarPDF(DIRE){
+    var seleccion = $('#selectCliente').val();
+   $.ajax({
+        url: 'funciones/consulta.php',
+        type: 'POST',
+        data: { variable: seleccion },
+        success: function(datos) {
+
+            console.log(datos);
+
+    var data = JSON.parse(datos);
+
+    console.log(data);
+    data.forEach(dat =>{
+    var nombre = dat.nombre;
+    var TE = dat.telefono;
+    var TE2 = dat.telefono_2;
+    var CO = dat.correo;
+
+    
+
+    console.log(nombre);
+    /*for (var i = 0; i < datos.length; i++) {
+        var fila = datos[i];
+        var columna2 = fila.nombre;
+
+        var textoa = columna2;
+        console.log(textoa);
+        
+    }*/
+
+        //Importamos la libreria 
+        const {jsPDF} = window.jspdf;
+        //window.html2canvas = html2canvas;
+        const base64Font = 'your-bas64-encoded-font-goes-here';
+    
 
     //VALORES
     var doc = new jsPDF('p','pt','letter');
     var text = document.getElementById('selectpago').value;
     
-    var CD = document.getElementById('selectCliente').value;
+   // var CD = document.getElementById('selectCliente').value;
+    var DIRE = document.getElementById('CALLECLIENTE').value;
+    var CIUD = document.getElementById('ciudadDirectContrato').value;
+    var ESTD = document.getElementById('estadoDirectContrato').value;
+
+
    // var CE = document.getElementById('').value;
-    var COD = document.getElementById('coloniaD').value;
-    var CID = document.getElementById('ciudadD').value;
-    var ED = document.getElementById('estadoD').value;
+   var year = new Date().getFullYear();
+    var COD = document.getElementById('Desc_1').value;
+    var CID = document.getElementById('Cant_1').value;
+    var EDE = document.getElementById('PU_1').value;
+    var ED = document.getElementById('Sub_1').value;
+
+    var DES2 = document.getElementById('Desc_2').value;
+    var CAD2 = document.getElementById('Cant_2').value;
+    var PU2 = document.getElementById('PU_2').value;
+    var SD2 = document.getElementById('Sub_2').value;
+
+    var DES3 = document.getElementById('Desc_3').value;
+    var CAD3 = document.getElementById('Cant_3').value;
+    var PU3 = document.getElementById('PU_3').value;
+    var SD3 = document.getElementById('Sub_3').value;
+
+    var DES4 = document.getElementById('Desc_4').value;
+    var CAD4 = document.getElementById('Cant_4').value;
+    var PU4 = document.getElementById('PU_4').value;
+    var SD4 = document.getElementById('Sub_4').value;
+
+    var DES5 = document.getElementById('Desc_5').value;
+    var CAD5 = document.getElementById('Cant_5').value;
+    var PU5 = document.getElementById('PU_5').value;
+    var SD5 = document.getElementById('Sub_5').value;
+
+    var DES6 = document.getElementById('Desc_6').value;
+    var CAD6 = document.getElementById('Cant_6').value;
+    var PU6 = document.getElementById('PU_6').value;
+    var SD6 = document.getElementById('Sub_6').value;
+
+    var DES7 = document.getElementById('Desc_7').value;
+    var CAD7 = document.getElementById('Cant_7').value;
+    var PU7 = document.getElementById('PU_7').value;
+    var SD7 = document.getElementById('Sub_7').value;
+
 
     var marca = document.getElementById('marca').value;
     var modelo = document.getElementById('modelo').value;
@@ -32,6 +101,8 @@ function generarPDF(){
     var A1 = document.getElementById('A1').value;
     var A2 = document.getElementById('A2').value;
     var balance = document.getElementById('balance').value;
+    var notas = document.getElementById('notas').value;
+
 
 
     //IMAGENES
@@ -54,7 +125,7 @@ function generarPDF(){
     //Contrato y Folio
     doc.setFont("Helvetica", "bold");
     doc.setFontSize(40);
-    doc.text ("2 0 2 4", 245, 98);
+    doc.text (year.toString(), 245, 98);
     doc.setFontSize(25);
     doc.text ("CONTRATO", 240, 125);
 
@@ -62,8 +133,8 @@ function generarPDF(){
 
     doc.setFont("Helvetica","");
     doc.setFontSize(10);
-    doc.text ("FECHA DE CONTRATACIÓN: _____/_____ 2024", 15, 150);
-    doc.text ("FECHA DE INSTALACIÓN: _____/_____ 2024", 15, 165);
+    doc.text ("FECHA DE CONTRATACIÓN: _____/_____" + year.toString(), 15, 150);
+    doc.text ("FECHA DE INSTALACIÓN: _____/_____"+ year.toString(), 15, 165);
 
 
     doc.setLineWidth(3); // Grosor de la línea en puntos
@@ -87,31 +158,31 @@ function generarPDF(){
     doc.text ("NOMBRE DEL CLIENTE", 240, 180);
     doc.setFillColor(221, 227, 255 );
     doc.roundedRect (13, 183, 583, 15, 3, 3,'F');
-    //doc.text(CD,15, 197);
+    doc.text(nombre,250, 197);
     doc.text ("DIRECCIÓN", 110, 209);
     doc.setFillColor(221, 227, 255 );
     doc.roundedRect (13, 210, 300, 15, 3, 3,'F');
-    doc.text(CD,15, 215);
+    doc.text(DIRE,20, 220);
     doc.text ("CIUDAD", 355, 209);
     doc.setFillColor(221, 227, 255 );
     doc.roundedRect (317, 210, 135, 15, 3, 3,'F');
-    //doc.text(CD, 320, 215);
+    doc.text(CIUD,320, 220);
     doc.text ("ESTADO", 500, 209);
     doc.setFillColor(221, 227, 255 );
     doc.roundedRect (458, 210, 135, 15, 3, 3,'F');
-    //doc.text(CD, 463, 215);
+    doc.text(ESTD,465, 220);
     doc.text ("CORREO ELECTRONICO", 100,  237);
     doc.setFillColor(221, 227, 255 );
     doc.roundedRect (13, 240, 300, 15, 3, 3,'F');
-    //doc.text(CE, 15, 245);
+    doc.text(CO, 40, 250);
     doc.text ("TELEFONO #1", 355, 237);
     doc.setFillColor(221, 227, 255 );
     doc.roundedRect (317, 240, 135, 15, 3, 3,'F');
-    //doc.text(CD, 320, 245);
+    doc.text(TE, 345, 250);
     doc.text ("TELEFONO #2", 500, 237);
     doc.setFillColor(221, 227, 255 );
     doc.roundedRect (458, 240, 135, 15, 3, 3,'F');
-    //doc.text(CD, 463, 245);
+    doc.text(TE2, 508, 250);
 
 
     doc.setFontSize(13);
@@ -136,11 +207,11 @@ function generarPDF(){
 
 
     doc.setFontSize(13);
-    doc.text ("INFORMACION DEL EQUIPO:", 350, 275);
+    doc.text ("INFORMACION DEL USUARIO:", 350, 275);
     doc.roundedRect (315, 280, 285, 90,2,2,'S');//informacion del usuario
     //doc.rect (10, 293, 285, 15,'S');
     doc.setFontSize(10);
-    doc.text ("CORREO/TELEFONO:", 430, 290);
+    doc.text ("CORREO/TELEFONO:", 380, 290);
     doc.setFillColor(221, 227, 255 );
     doc.roundedRect (318, 293, 250, 15, 3, 3,'F');
     //doc.rect (10, 280, 285, 15,'S');
@@ -169,8 +240,8 @@ function generarPDF(){
     doc.setFontSize(10);
     doc.text ("DESCRIPCCIÓN:", 130, 410);
     doc.text ("CANT:", 340, 410);
-    doc.text ("SUBTOTAL:", 410, 410);
-    doc.text ("TOTAL:", 520, 410);
+    doc.text ("P. UNITARIO:", 410, 410);
+    doc.text ("SUBTOTAL:", 520, 410);
     doc.text ("1", 15, 425);
     doc.text ("2", 15, 449);
     doc.text ("3", 15, 473);
@@ -184,42 +255,70 @@ function generarPDF(){
     doc.roundedRect (330, 411, 50, 19, 3, 3,'F');
     doc.roundedRect (385, 411, 100, 19, 3, 3,'F');
     doc.roundedRect (490, 411, 100, 19, 3, 3,'F');
+    doc.text (COD, 35, 425);
+    doc.text (CID, 340, 425);
+    doc.text (EDE, 395, 425);
+    doc.text (ED, 500, 425);
 
     doc.setFillColor(243, 243, 243);
     doc.roundedRect (25, 435, 300, 19, 3, 3,'F');
     doc.roundedRect (330, 435, 50, 19, 3, 3,'F');
     doc.roundedRect (385, 435, 100, 19, 3, 3,'F');
     doc.roundedRect (490, 435, 100, 19, 3, 3,'F');
+    doc.text (DES2, 35, 449);
+    doc.text (CAD2, 340, 449);
+    doc.text (PU2, 395, 449);
+    doc.text (SD2, 500, 449);
 
     doc.setFillColor(243, 243, 243);
     doc.roundedRect (25, 459, 300, 19, 3, 3,'F');
     doc.roundedRect (330, 459, 50, 19, 3, 3,'F');
     doc.roundedRect (385, 459, 100, 19, 3, 3,'F');
     doc.roundedRect (490, 459, 100, 19, 3, 3,'F');
+    doc.text (DES3, 35, 473);
+    doc.text (CAD3, 340, 473);
+    doc.text (PU3, 395, 473);
+    doc.text (SD3, 500, 473);
 
     doc.setFillColor(243, 243, 243);
     doc.roundedRect (25, 483, 300, 19, 3, 3,'F');
     doc.roundedRect (330, 483, 50, 19, 3, 3,'F');
     doc.roundedRect (385, 483, 100, 19, 3, 3,'F');
     doc.roundedRect (490, 483, 100, 19, 3, 3,'F');
+    doc.text (DES4, 35, 497);
+    doc.text (CAD4, 340, 497);
+    doc.text (PU4, 395, 497);
+    doc.text (SD4, 500, 497);
 
     doc.setFillColor(243, 243, 243);
     doc.roundedRect (25, 507, 300, 19, 3, 3,'F');
     doc.roundedRect (330, 507, 50, 19, 3, 3,'F');
     doc.roundedRect (385, 507, 100, 19, 3, 3,'F');
     doc.roundedRect(490, 507, 100, 19, 3, 3, 'F');
+    doc.text (DES5, 35, 522);
+    doc.text (CAD5, 340, 522);
+    doc.text (PU5, 395, 522);
+    doc.text (SD5, 500, 522);
 
     doc.setFillColor(243, 243, 243);
     doc.roundedRect (25, 531, 300, 19, 3, 3,'F');
     doc.roundedRect (330, 531, 50, 19, 3, 3,'F');
     doc.roundedRect (385, 531, 100, 19, 3, 3,'F');
     doc.roundedRect (490, 531, 100, 19, 3, 3,'F');
+    doc.text (DES6, 35, 545);
+    doc.text (CAD6, 340, 545);
+    doc.text (PU6, 395, 545);
+    doc.text (SD6, 500, 545);
 
     doc.setFillColor(243, 243, 243);
     doc.roundedRect (25, 555, 300, 19, 3, 3,'F');
     doc.roundedRect (330, 555, 50, 19, 3, 3,'F');
     doc.roundedRect (385, 555, 100, 19, 3, 3,'F');
     doc.roundedRect (490, 555, 100, 19, 3, 3,'F');
+    doc.text (DES7, 35, 569);
+    doc.text (CAD7, 340, 569);
+    doc.text (PU7, 395, 569);
+    doc.text (SD7, 500, 569);
 
 
    
@@ -239,8 +338,8 @@ function generarPDF(){
     doc.text ("$", 208, 623);
 
     doc.setFontSize(10);
-    doc.text ("_____/_____ 2024", 15, 640);
-    doc.text ("_____/_____ 2024", 112, 640);
+    doc.text ("_____/_____ " + year.toString(), 15, 640);
+    doc.text ("_____/_____ "+ year.toString(), 112, 640);
 
     doc.setTextColor(0);
     doc.setFillColor(0);
@@ -251,7 +350,16 @@ function generarPDF(){
 
     doc.setFontSize(10);
     doc.text ("NOTAS:", 390, 648);
-    doc.roundedRect (350, 650, 250, 60,2,2,'S'); //NOTAS
+    //doc.roundedRect (350, 650, 250, 60,2,2,'S'); //NOTAS
+
+    const x1 = 350;
+    const y1 = 650;
+    const width1 = 250;
+    const height1 = 60;
+
+    doc.roundedRect(x1, y1, width1, height1,2,2, 'S'); 
+    doc.text(notas, x1 + 5, y1 + 10, { maxWidth: width1 - 10 });
+
 
     doc.roundedRect (13, 590, 90, 15, 2, 2,'S'); //ANTICIPO 1
     doc.setFontSize(12);
@@ -277,7 +385,7 @@ function generarPDF(){
     doc.text ("IVA:", 480, 615);
     doc.text ("TOTAL:", 470, 630);
 
-    doc.setFillColor(198, 197, 197);
+    doc.setFillColor(243, 243, 243);
     doc.roundedRect (525, 590, 72, 10, 3, 3,'F');//subtotal iva y total
     doc.roundedRect (525, 605, 72, 10, 3, 3,'F');
     doc.roundedRect (525, 620, 72, 10, 3, 3,'F');
@@ -321,12 +429,13 @@ function generarPDF(){
     doc.text(texto, x + 5, y + 5, { maxWidth: width - 10 });
     
     
-    doc.addFileToVFS('Roboto-monospace.ttf', base64Font);
-    doc.addFont('Roboto-monospace.ttf', 'Roboto', 'monospace');
 
     
     //doc.text(text,200,100);
 
     //Mostramos el PDF sin descargar
     doc.output('pdfobjectnewwindow');
+});
+}
+    });
 }
