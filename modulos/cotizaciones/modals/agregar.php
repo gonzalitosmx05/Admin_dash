@@ -11,19 +11,19 @@
         <div class="modal-body">        
           <div class="form-group">
               <label class="d-block text-center" for="nombreCliente">Nombre o Razon Social</label>
-              <input required type="text" class="form-control" id="nombreCliente" placeholder="Nombre">
+              <input required type="text" class="form-control" id="nombreClienteAddNew" placeholder="Nombre">
           </div>    
           <div class="form-group">
               <label class="d-block text-center" for="telefonoCliente">Telefono</label>
-              <input type="text" class="form-control" id="telefonoCliente" placeholder="Telefono">
+              <input type="text" class="form-control" id="telefonoClienteAddNew" placeholder="Telefono">
           </div>     
           <div class="form-group">
               <label class="d-block text-center" for="telefono2Cliente">Telefono 2</label>
-              <input type="text" class="form-control" id="telefono2Cliente" placeholder="Telefono 2">
+              <input type="text" class="form-control" id="telefono2ClienteAddNew" placeholder="Telefono 2">
           </div>                
           <div class="form-group">
               <label class="d-block text-center" for="correoCliente">Correo</label>
-              <input type="email" class="form-control" id="correoCliente" placeholder="Correo">
+              <input type="email" class="form-control" id="correoClienteAddNew" placeholder="Correo">
           </div>                    
         </div>
         <div class="modal-footer">

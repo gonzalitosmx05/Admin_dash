@@ -1,9 +1,6 @@
 
 $(document).ready(function(){
 
-  
- 
-
   //Funcion para actualizar totales generales de la tabla y del presupuesto total
   function actualizarTotal(){
     var total = 0;
@@ -11,11 +8,32 @@ $(document).ready(function(){
       total += parseFloat($(this).find('.subtotal').val()) || 0;    
     });
   
-    $('#subtotalGeneral').val(total.toFixed(2));
-    $('#ivaGeneral').val((total*.08).toFixed(2));
-    $('#totalGeneral').val(((total*.08)+total).toFixed(2));
+    if($('#radioImpuesto1').is(':checked')){        
+      $('#subtotalGeneral').val(total.toFixed(2));
+      $('#ivaGeneral').val((total*.08).toFixed(2));
+      $('#totalGeneral').val(((total*.08)+total).toFixed(2));
+    }
+    else{
+      $('#subtotalGeneral').val(total.toFixed(2));
+      $('#ivaGeneral').val(0);
+      $('#totalGeneral').val((total).toFixed(2));
+    }
+
+
   }
   
+  $('#radioImpuesto1').on('change',function(){
+    actualizarTotal();
+    $('#termsConditions').val("");
+  });
+  $('#radioImpuesto2').on('change',function(){
+    actualizarTotal();
+    if($('#radioImpuesto2').is(':checked')){        
+      $('#termsConditions').val("-PRECIOS NO INCLUYEN IVA"+$('#termsConditions').val())
+    }
+   
+  });
+
   //Funcion para calcular los subtotales de cada fila
   $('#tabla tbody').on('change','.cantidad, .precio',function(){
     var fila = $(this).closest('tr');
@@ -94,8 +112,9 @@ $(document).ready(function(){
         {
           valor = "0" + valor;
         }
-      }
+      }      
       return valor;
+      
   
     }
 
@@ -237,10 +256,138 @@ $(document).ready(function(){
   }
 
   $('#downloadSave').on('click',function(){
-    generarPDFAndDownload();   
+    generarPDFAndDownload();  
+    registrarCotizacion();
+    registrarDetallesCotizacion();
+    window.location.reload();    
+    
   });
   
+  function registrarCotizacion(){
+
+    function fechasVigencias(){    
+      // Obtener la fecha actual
+      var fechaActual = new Date();
   
+      // Obtener los componentes de la fecha
+      var dia = fechaActual.getDate();
+      var mes = fechaActual.getMonth() + 1; // Los meses son indexados desde 0, por lo que necesitas sumar 1
+      var año = fechaActual.getFullYear() % 100; // Obtiene solo los últimos dos dígitos del año
+  
+      // Formatear la fecha
+      var fechaFormateadaActual = (año) + '/' + ('0' + mes).slice(-2) + '/' + ('0' + dia).slice(-2);
+  
+      // Imprimir la fecha actual en formato dd/mm/aa
+      //console.log(fechaFormateadaActual);
+  
+      // Obtener la fecha 15 días después
+      var fecha15DiasDespues = new Date(fechaActual);
+      fecha15DiasDespues.setDate(fechaActual.getDate() + 15);
+  
+      // Obtener los componentes de la fecha 15 días después
+      var diaDespues = fecha15DiasDespues.getDate();
+      var mesDespues = fecha15DiasDespues.getMonth() + 1; // Los meses son indexados desde 0, por lo que necesitas sumar 1
+      var añoDespues = fecha15DiasDespues.getFullYear() % 100; // Obtiene solo los últimos dos dígitos del año
+  
+      // Formatear la fecha 15 días después
+      var fechaFormateadaDespues = (añoDespues)+ '/' + ('0' + mesDespues).slice(-2) + '/' + ('0' + diaDespues).slice(-2);
+  
+            
+
+      return [fechaFormateadaActual,fechaFormateadaDespues];      
+
+      //console.log(fechaFormateadaDespues);
+    }
+
+    //Datos Registro Escencial
+    let idAgente = $('#agenteIdRegistro').text();
+    let idCliente = $('#selectCliente').val();
+    let fechas = fechasVigencias();
+    let fechaEmit = fechas[0];
+    let fechaVig = fechas[1];
+    let subtotalReg =$('#subtotalGeneral').val();
+    let iva = $('#ivaGeneral').val();
+    let total = $('#totalGeneral').val();
+    let notas = $('#termsConditions').val();
+    let ivaValidar = 0;
+
+    if($('#radioImpuesto1').is(':checked')){
+      ivaValidar = 1;
+    }
+    else{
+      ivaValidar = 0;
+    }
+
+    console.log(ivaValidar);
+
+    
+    /*console.log(idAgente);
+    console.log(idCliente);
+    console.log(fechaEmit);
+    console.log(fechaVig);
+    console.log(subtotalReg);
+    console.log(iva);
+    console.log(total);
+    console.log(notas);
+    console.log(ivaValidar);*/
+
+    const dataPost = {
+      id_cliente:idCliente,
+      id_usuario: idAgente,
+      emision: fechaEmit,
+      expiracion: fechaVig,
+      subtotal: subtotalReg,
+      iva: iva,
+      total: total,
+      notas: notas,
+      validariva:ivaValidar
+    }
+    
+    $.ajax({
+        url:"funciones/registrarCotizacion.php",
+        data: dataPost,
+        type: "POST",
+        success: function(response){
+          if(!response.error){
+          
+          }
+        }
+    }); 
+
+     
+
+  }
+ 
+  function registrarDetallesCotizacion(){
+    //Obtenemos Datos
+    let datos = [];
+
+    $('#tabla tbody tr').each(function(){
+      var fila = {
+      descripcion: $(this).find('.descripcion').val(),
+      sku: $(this).find('.sku').val(),
+      cantidad: $(this).find('.cantidad').val(),
+      precio: $(this).find('.precio').val(),
+      subtotal: $(this).find('.subtotal').val()
+      };
+      datos.push(fila);
+    });     
+
+    
+    $.ajax({
+       type:"POST",
+       url:'funciones/registrarDetallesCotizacion.php',
+       data: JSON.stringify({productos:datos}),
+       success: function(response){
+         console.log(Response)
+         console.log('Si jala');
+       }
+    });
+  }
+  
+  $('#botonDePruebas').click(function(){
+    
+  });
 
   //Funcion para Generar Archivo PDF y Descargarlo
   function generarPDFAndDownload(){ 
@@ -520,6 +667,28 @@ $(document).ready(function(){
     doc.save('Prueba.pdf');
   }
     
+  $('#btnRgistrarCLiente').on('click',function(){
+    const dataPost = {
+        nombre:$("#nombreClienteAddNew").val(),
+        telefono1:$("#telefonoClienteAddNew").val(),
+        telefono2:$("#telefono2ClienteAddNew").val(),
+        correo:$("#correoClienteAddNew").val()
+    };
+
+    console.log(dataPost);
+    $.ajax({
+        url:"funciones/registrarCliente.php",
+        data: dataPost,
+        type: "POST",
+        success: function(response){
+            if(!response.error){
+                $("#clienteForm").trigger("reset");
+                $("#agregarCliente").modal("toggle");
+                console.log(response);
+            }
+        }
+    });
+});
 
 
 

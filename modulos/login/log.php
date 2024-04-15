@@ -15,12 +15,13 @@ if($_POST){
     if($num > 0){
         $row = $resultado->fetch_assoc();
         session_start();
-        $_SESSION['id'] = $row['id_usuario'];
+        $_SESSION['id'] = $row['id'];
         $_SESSION['user'] = $row['usuario'];  
         $_SESSION['nivel'] = $row['nivel'];
         $_SESSION['name'] = $row['nombre'];
         $conexion->close();    
         header('location: ../home/vista.php');
+        
     }
     else{
         header('location: ../../index.php');
