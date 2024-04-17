@@ -28,9 +28,9 @@ require ("../estructura/sidebar.php");
                     <div class="d-flex">
                         <div class="">
                             <select class="form-control" id="filtroBusqueda">
-                                <option>Conceptos</option>
-                                <option>Agente</option>
-                                <option>Cliente</option>
+                                <option value="notas">Conceptos</option>
+                                <option value="id_usuario">Agente</option>
+                                <option value="id_cliente">Cliente</option>
                             </select>
                         </div>
                         <div class=" ml-2" style="width: 100%;">   
@@ -40,7 +40,23 @@ require ("../estructura/sidebar.php");
                 </div>
 
                 <div class="card-body">
-                    <table></table>
+                    <table class="table table-bordered table-sm">
+                        <thead>
+                            <tr>
+                                <td class="text-center">Id</td>
+                                <td class="text-center">Cliente</td>                
+                                <td class="text-center">Agente</td>
+                                <td class="text-center">Emision</td>                            
+                                <td class="text-center">Expiración</td>
+                                <td class="text-center">Subtotal</td>
+                                <td class="text-center">IVA</td>
+                                <td class="text-center">Total</td>
+                                <td class="text-center">Notas</td>
+                            </tr>
+                        </thead>
+
+                        <tbody id="Cotiz"></tbody>
+                    </table>
                 </div>
             </div>
            
@@ -53,7 +69,7 @@ require ("../estructura/sidebar.php");
 <!--JQuery-->
 <script src="../../assets/js/jquery-3.7.1.min.js"></script>
 
-<script src="funciones_cot.js"></script>
+<script src="cotiz.js"></script>
 
 
 
