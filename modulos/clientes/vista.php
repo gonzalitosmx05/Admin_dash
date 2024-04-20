@@ -1,12 +1,13 @@
 
 <?php 
 require ("../estructura/header.php");
+include("modal/agregar.php");
 include("funciones/cargarClientes.php");
-include ("modal/info_cliente.php");
-include ("modal/eliminar.php");
-include ("modal/agregar.php");
-include ("modal/domicilio.php");
-require ("../estructura/sidebar.php");?>
+include("modal/domicilio.php");
+include("modal/info_cliente.php");
+include("modal/eliminar.php");
+require ("../estructura/sidebar.php");
+?>
 
 
 
@@ -83,10 +84,6 @@ require ("../estructura/sidebar.php");?>
 </div>
 
 
-
-
-
-
  <!--JQuery-->
  <script src="../../assets/js/jquery-3.7.1.min.js"></script>
 
@@ -94,6 +91,7 @@ require ("../estructura/sidebar.php");?>
 
 
 <?php
+
 require ("../estructura/footer.php");
 
 ?>

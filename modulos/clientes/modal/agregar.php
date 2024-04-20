@@ -1,5 +1,5 @@
-<div id="agregarCliente" class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+<div class="modal" tabindex="-1" role="dialog" id="agregarCliente">
+<div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Nuevo Cliente</h5>

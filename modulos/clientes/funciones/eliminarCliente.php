@@ -11,7 +11,9 @@ if($_POST["clientId"]){
     
 
     echo "ID del boton recivido: $IdCliente";
-}else{
+
+}
+else{
     echo "ID del boton no recivido";
 
 }

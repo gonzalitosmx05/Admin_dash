@@ -1,4 +1,4 @@
-<div class="modal fade bd-example-modal-lg" id="delet_client" role="dialog" tabindex="1">
+<div class="modal fade bd-example-modal-lg" id="delet_client" role="dialog" tabindex="-1">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
     <div class="modal-header">
@@ -16,6 +16,3 @@
     </div>
   </div>
 </div>
-
-
-

@@ -1,4 +1,4 @@
-    </section>  
+</section>  
         
         <!--SideBar-->
         <script src="../../assets/js/funciones_sidebar.js"></script>
