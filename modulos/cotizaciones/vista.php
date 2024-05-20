@@ -164,7 +164,7 @@ require ("../estructura/sidebar.php");
                     <textarea id="termsConditions" class="form-control" aria-label="With textarea" rows="10">-PRECIOS NO INCLUYEN IVA
                     </textarea>
                 </div>
-                <div class="card col mx-2">
+                <div hidden class="card col mx-2">
                     <div class="card-header">
                         Imagenes de Referencia
                         

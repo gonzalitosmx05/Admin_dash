@@ -1,9 +1,17 @@
 <?php 
 session_start();
+
+if(isset($_SESSION['id'])) {
+    $user_id = $_SESSION['id'];
+}
+
 require ("../estructura/header.php");
 include ("funciones/cargaClientes.php");
 include ("modals/registClient.php");
 include ("modals/DireClient.php");
+include ("modals/historialContratos.php");
+include ("modals/descContrato.php");
+include ("modals/previewPDF.php");
 require ("../estructura/sidebar.php");
 ?>
 
@@ -44,6 +52,10 @@ require ("../estructura/sidebar.php");
                                 <i class="fa-brands fa-searchengin"></i>
                                 Registrar Direccion
                             </button>
+                            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#historialC">
+                                <i class="fa-brands fa-searchengin"></i>
+                               Historial de Contratos
+                            </button>
                         </div>
                     </div>
 
@@ -51,7 +63,9 @@ require ("../estructura/sidebar.php");
                 </div>
                 
             <div class="form-group w-50 mt-2">       
-            <input type="hidden" id="CALLECLIENTE">             
+            <input type="hidden" id="CALLECLIENTE"> 
+            <input type="hidden" id="folioInput">
+            <input type="hidden" id="user" value ="<?php echo $user_id ?>">                         
                         <label class="d-block text-center" for="clientDirec">Calle</label>
                         <select name="clientDirec" id="clientDirec" style="width: 100%;" >
                         <option>Selecciona Domicilio</option>
@@ -136,7 +150,7 @@ require ("../estructura/sidebar.php");
                                     <input required type="number" id="Cant_1" class="cantidad form-control" placeholder="0" autocomplete="off" name="cantidad[]">
                                 </td>
                                 <td>
-                                    <input required type="number" id="PU_1" class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
+                                    <input required type="number" id="PU_1" class="precio form-control" placeholder="0" autocomplete="off" name="precio[]">
                                 </td>
                                 <td>
                                     <input disabled type="text" id="Sub_1" class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
@@ -150,7 +164,7 @@ require ("../estructura/sidebar.php");
                                     <input required type="number" id="Cant_2" class="cantidad form-control" placeholder="0" autocomplete="off" name="cantidad[]">
                                 </td>
                                 <td>
-                                    <input required type="number" id="PU_2" class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
+                                    <input required type="number" id="PU_2" class="precio form-control" placeholder="0" autocomplete="off" name="precio[]">
                                 </td>
                                 <td>
                                     <input disabled type="text" id="Sub_2" class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
@@ -164,7 +178,7 @@ require ("../estructura/sidebar.php");
                                     <input required type="number" id="Cant_3"class="cantidad form-control" placeholder="0" autocomplete="off" name="cantidad[]">
                                 </td>
                                 <td>
-                                    <input required type="number" id="PU_3" class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
+                                    <input required type="number" id="PU_3" class="precio form-control" placeholder="0" autocomplete="off" name="precio[]">
                                 </td>
                                 <td>
                                     <input disabled type="text" id="Sub_3" class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
@@ -178,7 +192,7 @@ require ("../estructura/sidebar.php");
                                     <input required type="number" id="Cant_4" class="cantidad form-control" placeholder="0" autocomplete="off" name="cantidad[]">
                                 </td>
                                 <td>
-                                    <input required type="number" id="PU_4" class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
+                                    <input required type="number" id="PU_4" class="precio form-control" placeholder="0" autocomplete="off" name="precio[]">
                                 </td>
                                 <td>
                                     <input disabled type="text" id="Sub_4" class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
@@ -192,7 +206,7 @@ require ("../estructura/sidebar.php");
                                     <input required type="number" id="Cant_5"class="cantidad form-control" placeholder="0" autocomplete="off" name="cantidad[]">
                                 </td>
                                 <td>
-                                    <input required type="number" id="PU_5"class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
+                                    <input required type="number" id="PU_5"class="precio form-control" placeholder="0" autocomplete="off" name="precio[]">
                                 </td>
                                 <td>
                                     <input disabled type="text"id="Sub_5" class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
@@ -206,7 +220,7 @@ require ("../estructura/sidebar.php");
                                     <input required type="number" id="Cant_6" class="cantidad form-control" placeholder="0" autocomplete="off" name="cantidad[]">
                                 </td>
                                 <td>
-                                    <input required type="number" id="PU_6"class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
+                                    <input required type="number" id="PU_6"class="precio form-control" placeholder="0" autocomplete="off" name="precio[]">
                                 </td>
                                 <td>
                                     <input disabled type="text" id="Sub_6"class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
@@ -220,7 +234,7 @@ require ("../estructura/sidebar.php");
                                     <input required type="number" id="Cant_7"class="cantidad form-control" placeholder="0" autocomplete="off" name="cantidad[]">
                                 </td>
                                 <td>
-                                    <input required type="number" id="PU_7"class="precio form-control" placeholder="0" autocomplete="off" name="precio[]"">
+                                    <input required type="number" id="PU_7"class="precio form-control" placeholder="0" autocomplete="off" name="precio[]">
                                 </td>
                                 <td>
                                     <input disabled type="text" id="Sub_7"class="subtotal form-control" placeholder="0" autocomplete="off" name="subtotal[]">
@@ -277,23 +291,23 @@ require ("../estructura/sidebar.php");
                         </select>                    
                     </div>
                     
-                    <table class="table" id="tabla">
+                    <table class="table" id="table">
                         <thead class="bg text-black">                            
                                 <th scope="col" style="width: 200px;">Anticipo #1</th>
                                 <th scope="col" style="width: 200px;">Anticipo #2</th>
                                 <th scope="col" style="width: 200px;">Balance</th>
                                                           
                         </thead>
-                        <tbody id="TBody">
-                            <tr id="TRow" class="fila-fija">
-                                <td>
-                                    <input  type="text" class="sku form-control"  id="A1" name="sku[]" autocomplete="off">
+                        <tbody id="balance">
+                            <tr id="row" class="fila-fija">
+                            <td>
+                                    <input required type="text" id="A1"class="A1 form-control" placeholder="0" autocomplete="off">
                                 </td>
                                 <td>
-                                    <input type="text" class="cantidad form-control"  id="A2" autocomplete="off">
+                                    <input required type="text" id="A2"class="A2 form-control"  autocomplete="off">
                                 </td>
                                 <td>
-                                    <input type="text" class="precio form-control" id="balance" autocomplete="off" >
+                                    <input disabled type="text" id="balance"class="balance form-control" placeholder="0" autocomplete="off">
                                 </td>
                             </tr>                        
                         </tbody>

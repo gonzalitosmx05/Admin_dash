@@ -4,6 +4,7 @@ include("../../../core/conexion.php");
 
 
 if(isset($_POST['id_cliente'])){
+    echo "Funciona el post";
     $idCliente = $_POST['id_cliente'];    
     $idUsuario = $_POST['id_usuario'];
     $emision = $_POST['emision'];
@@ -29,3 +30,4 @@ if(isset($_POST['id_cliente'])){
 
 
 ?>
+

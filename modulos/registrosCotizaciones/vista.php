@@ -1,9 +1,6 @@
 <?php 
 session_start();
 require ("../estructura/header.php");
-include("funciones/cargarClientes.php");
-include("modals/preview.php");
-include("modals/agregar.php");
 require ("../estructura/sidebar.php");
 ?>
 
@@ -26,11 +23,11 @@ require ("../estructura/sidebar.php");
                         Buscar
                     </label>
                     <div class="d-flex">
-                        <div class="">
+                        <div class="" style="width: 20%;">
                             <select class="form-control" id="filtroBusqueda">
-                                <option value="notas">Conceptos</option>
-                                <option value="id_usuario">Agente</option>
-                                <option value="id_cliente">Cliente</option>
+                                <option value="notasFilter">Conceptos</option>
+                                <option value="id_usuarioFilter">Agente</option>
+                                <option value="id_clienteFilter">Cliente</option>
                             </select>
                         </div>
                         <div class=" ml-2" style="width: 100%;">   
@@ -43,19 +40,17 @@ require ("../estructura/sidebar.php");
                     <table class="table table-bordered table-sm">
                         <thead>
                             <tr>
-                                <td class="text-center">Id</td>
-                                <td class="text-center">Cliente</td>                
-                                <td class="text-center">Agente</td>
-                                <td class="text-center">Emision</td>                            
-                                <td class="text-center">Expiración</td>
-                                <td class="text-center">Subtotal</td>
-                                <td class="text-center">IVA</td>
-                                <td class="text-center">Total</td>
-                                <td class="text-center">Notas</td>
+                                <td class="text-center" style="width: 10%;">Folio</td>
+                                <td class="text-center" style="width: 10%;">Cliente</td>                
+                                <td class="text-center" style="width: 10%;">Emision</td>                            
+                                <td class="text-center" style="width: 65%;">Conceptos</td>`
+                                <td class="text-center" style="width: 5%;">Opciones</td>
                             </tr>
                         </thead>
 
-                        <tbody id="Cotiz"></tbody>
+                        <tbody id="BodyCotizaciones">
+
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -69,7 +64,7 @@ require ("../estructura/sidebar.php");
 <!--JQuery-->
 <script src="../../assets/js/jquery-3.7.1.min.js"></script>
 
-<script src="cotiz.js"></script>
+<script src="funciones.js"></script>
 
 
 

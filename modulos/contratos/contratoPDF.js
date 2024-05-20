@@ -1,3 +1,4 @@
+
 //Elementos en el HTML
 const pdfButton = document.getElementById('pdfButton');
 
@@ -5,7 +6,7 @@ const pdfButton = document.getElementById('pdfButton');
 pdfButton.onclick = generarPDF;
 
 //Funcion para Generar Archivo PDF
-function generarPDF(DIRE){
+function generarPDF(){
     var seleccion = $('#selectCliente').val();
    $.ajax({
         url: 'funciones/consulta.php',
@@ -41,19 +42,36 @@ function generarPDF(DIRE){
         //window.html2canvas = html2canvas;
         const base64Font = 'your-bas64-encoded-font-goes-here';
     
-
-    //VALORES
     var doc = new jsPDF('p','pt','letter');
     var text = document.getElementById('selectpago').value;
     
-   // var CD = document.getElementById('selectCliente').value;
+   // VALORES
     var DIRE = document.getElementById('CALLECLIENTE').value;
     var CIUD = document.getElementById('ciudadDirectContrato').value;
     var ESTD = document.getElementById('estadoDirectContrato').value;
 
 
-   // var CE = document.getElementById('').value;
+   // FECHA, NUMERO DE FOLIO Y CONTRATO
    var year = new Date().getFullYear();
+   var Dia = new Date().getDate();
+   var mes = new Date().getMonth() + 1;
+
+
+   // Generar un número de folio único combinando la fecha actual con un número aleatorio
+/*function generarNumeroFolio() {
+    var fechaActual = new Date();
+    var dia = fechaActual.getDate();
+    var mes = fechaActual.getMonth() + 1; // Sumar 1 porque los meses van de 0 a 11
+    var año = fechaActual.getFullYear();
+    var numeroAleatorio = Math.floor(Math.random() * 1000); // Número aleatorio entre 0 y 999
+
+    var numeroFolio = año + "-" + mes + "-" + dia + "-" + numeroAleatorio;
+    return numeroFolio;
+}*/
+
+var numeroFolio = document.getElementById('folioInput').value;
+
+    // DATOS DEL CONTRATO
     var COD = document.getElementById('Desc_1').value;
     var CID = document.getElementById('Cant_1').value;
     var EDE = document.getElementById('PU_1').value;
@@ -98,8 +116,8 @@ function generarPDF(DIRE){
     var iva = document.getElementById('ivaGeneral').value;
     var total = document.getElementById('totalGeneral').value;
 
-    var A1 = document.getElementById('A1').value;
-    var A2 = document.getElementById('A2').value;
+    var A1 = parseFloat(document.getElementById('A1').value) || 0;
+    var A2 = parseFloat(document.getElementById('A2').value) || 0;
     var balance = document.getElementById('balance').value;
     var notas = document.getElementById('notas').value;
 
@@ -132,16 +150,20 @@ function generarPDF(DIRE){
 
 
     doc.setFont("Helvetica","");
-    doc.setFontSize(10);
-    doc.text ("FECHA DE CONTRATACIÓN: _____/_____" + year.toString(), 15, 150);
-    doc.text ("FECHA DE INSTALACIÓN: _____/_____"+ year.toString(), 15, 165);
+    doc.setFontSize(10); 
+    doc.text (Dia.toString(), 160, 147);
+    doc.text (mes.toString(), 195, 147);
+    doc.text ("FECHA DE CONTRATACIÓN: _____/_____ " + year.toString(), 15, 150);
+    doc.text ("FECHA DE INSTALACIÓN: _____/_____ "+ year.toString(), 15, 165);
 
 
     doc.setLineWidth(3); // Grosor de la línea en puntos
     doc.setDrawColor(169, 8, 8);
     doc.setTextColor(169, 8, 8);
-    doc.text ("FOLIO:", 460, 145);
+    doc.text ("FOLIO:", 460, 146);
     doc.rect (410, 110, 185, 15,'S');
+    doc.setTextColor(0);
+    doc.text (numeroFolio, 510, 146);
     doc.rect (500, 135, 95, 15,'S');
 
     //Datos e Informacion del Usuario
@@ -162,15 +184,15 @@ function generarPDF(DIRE){
     doc.text ("DIRECCIÓN", 110, 209);
     doc.setFillColor(221, 227, 255 );
     doc.roundedRect (13, 210, 300, 15, 3, 3,'F');
-    doc.text(DIRE,20, 220);
+    doc.text(DIRE,50, 220);
     doc.text ("CIUDAD", 355, 209);
     doc.setFillColor(221, 227, 255 );
     doc.roundedRect (317, 210, 135, 15, 3, 3,'F');
-    doc.text(CIUD,320, 220);
+    doc.text(CIUD,360, 220);
     doc.text ("ESTADO", 500, 209);
     doc.setFillColor(221, 227, 255 );
     doc.roundedRect (458, 210, 135, 15, 3, 3,'F');
-    doc.text(ESTD,465, 220);
+    doc.text(ESTD,500, 220);
     doc.text ("CORREO ELECTRONICO", 100,  237);
     doc.setFillColor(221, 227, 255 );
     doc.roundedRect (13, 240, 300, 15, 3, 3,'F');
@@ -191,7 +213,7 @@ function generarPDF(DIRE){
     doc.setFontSize(10);
     //doc.rect (10, 293, 285, 15,'S');
     doc.text ("MARCA:", 130, 290);
-    doc.setFillColor(229, 230, 241);
+    doc.setFillColor(221, 227, 255 );
     doc.roundedRect (13, 293, 278, 15, 3, 3,'F');
     doc.text(marca, 130, 302);
     //doc.rect (10, 280, 285, 15,'S');
@@ -337,6 +359,21 @@ function generarPDF(DIRE){
     doc.text ("$", 112, 623);
     doc.text ("$", 208, 623);
 
+
+    if(A1 > 0){
+        doc.setFontSize(10);
+        doc.text (Dia.toString(), 20, 638);
+        doc.text (mes.toString(), 57, 638);
+     
+    }
+    if(A2 > 0){
+        doc.setFontSize(10);
+        doc.text (Dia.toString(), 120, 638);
+        doc.text (mes.toString(), 157, 638);
+     
+    }
+
+
     doc.setFontSize(10);
     doc.text ("_____/_____ " + year.toString(), 15, 640);
     doc.text ("_____/_____ "+ year.toString(), 112, 640);
@@ -363,17 +400,17 @@ function generarPDF(DIRE){
 
     doc.roundedRect (13, 590, 90, 15, 2, 2,'S'); //ANTICIPO 1
     doc.setFontSize(12);
-    doc.text(A1,36, 620);
+    doc.text(A1.toString(),36, 620);
     doc.roundedRect (13, 608, 90, 20,2,2,'S'); 
 
     doc.roundedRect (110, 590, 90, 15, 2, 2,'S'); //ANTICIPO 2
     doc.setFontSize(12);
-    doc.text(A2,133, 620);
+    doc.text(A2.toString(),133, 620);
     doc.roundedRect (110, 608, 90, 20,2,2,'S'); 
 
     doc.roundedRect (207, 590, 90, 15, 2, 2,'S'); //BALANCE
     doc.setFontSize(12);
-    doc.text(balance,230, 620);
+    //doc.text(balance,230, 620);
     doc.roundedRect (207, 608, 90, 20,2,2,'S'); 
 
 
@@ -433,9 +470,74 @@ function generarPDF(DIRE){
     
     //doc.text(text,200,100);
 
+      
+
+
+      const dataPost = {
+        Idclient:$("#selectCliente").val(),
+        cuid:$("#ciudadDirectContrato").val(),
+        est:$("#estadoDirectContrato").val(),
+        CE:CO,
+        tel1:TE,
+        tel2:TE2,
+        Iduser:$("#user").val(),
+        Nmclient:$("#selectCliente option:selected").text(),
+        marca:$("#marca").val(),
+        modelo:$("#modelo").val(),
+        n_serie:$("#nserie").val(),
+        anticipo1:$("#A1").val(),
+        anticipo2:$("#A2").val(),
+        balance:$("#balance").val(),
+        subtotal:$("#subtotalGeneral").val(),
+        iva:$("#ivaGeneral").val(),
+        total:$("#totalGeneral").val(),
+        f_pago:$("#selectpago").val(),
+        notas:$("#notas").val(),
+        folio:numeroFolio,
+        domi: $("#clientDirec option:selected").text(),
+        desc: [],
+        cant:[],
+        precio:[],
+        subT:[]
+      };
+      
+      $('input[name="descripcion[]"]').each(function() {
+          var valor = $(this).val();
+          dataPost.desc.push(valor); 
+      });
+
+      $('input[name="cantidad[]"]').each(function() {
+        var valor = $(this).val();
+        dataPost.cant.push(valor); 
+    });
+
+      $('input[name="precio[]"]').each(function() {
+        var valor = $(this).val();
+        dataPost.precio.push(valor); 
+    });
+
+      $('input[name="subtotal[]"]').each(function() {
+        var valor = $(this).val();
+        dataPost.subT.push(valor); 
+    });
+
+    console.log(dataPost);
+
+    $.ajax({
+      url:"funciones/registroContrato.php",
+      data:dataPost,
+        type: "POST",
+        success: function(response){
+          console.log(response);
+        }
+    });
+
+
+
     //Mostramos el PDF sin descargar
     doc.output('pdfobjectnewwindow');
 });
 }
     });
 }
+
