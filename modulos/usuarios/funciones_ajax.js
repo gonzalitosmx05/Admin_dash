@@ -8,11 +8,11 @@ $(function(){
         e.preventDefault();
 
         const dataPost = {
-            nombre:$("#nombreUsuario").val(),
-            telefono:$("#telefonoUsuario").val(),
-            nivel:$("#nivelUsuario").val(),
-            usuario:$("#usuarioUsuario").val(),
-            pass:$("#passUsuario").val()     
+            nombre:$("#nombreUsuario").val().toUpperCase(),
+            telefono:$("#telefonoUsuario").val().toUpperCase(),
+            nivel:$("#nivelUsuario").val().toUpperCase(),
+            usuario:$("#usuarioUsuario").val().toUpperCase(),
+            pass:$("#passUsuario").val().toUpperCase()     
         };
 
         $.ajax({

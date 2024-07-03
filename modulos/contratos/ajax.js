@@ -67,10 +67,10 @@ $(document).ready(function(){
       e.preventDefault();
 
       const dataPost = {
-          nombre:$("#nombreCliente").val(),
-          telefono:$("#telefonoCliente").val(),
-          telefono2:$("#telefono2Cliente").val(),
-          correo:$("#correoCliente").val()
+          nombre:$("#nombreCliente").val().toUpperCase(),
+          telefono:$("#telefonoCliente").val().toUpperCase(),
+          telefono2:$("#telefono2Cliente").val().toUpperCase(),
+          correo:$("#correoCliente").val().toUpperCase()
       };
       console.log(dataPost);
      $.ajax({
@@ -92,14 +92,14 @@ $(document).ready(function(){
     e.preventDefault();
     const dataPost = {
         cliente:idSeleccionado,
-        calle:$("#calleD").val(),
-        exterior:$("#exteriorD").val(),
-        interior:$("#interiorD").val(),
-        colonia:$("#coloniaD").val(),
-        ciudad:$("#ciudadD").val(),
-        estado:$("#estadoD").val(),
-        pais:$("#paisD").val(),
-        referencia:$("#referenciaD").val()
+        calle:$("#calleD").val().toUpperCase(),
+        exterior:$("#exteriorD").val().toUpperCase(),
+        interior:$("#interiorD").val().toUpperCase(),
+        colonia:$("#coloniaD").val().toUpperCase(),
+        ciudad:$("#ciudadD").val().toUpperCase(),
+        estado:$("#estadoD").val().toUpperCase(),
+        pais:$("#paisD").val().toUpperCase(),
+        referencia:$("#referenciaD").val().toUpperCase()
     };
 
     console.log(dataPost);
@@ -210,7 +210,6 @@ $(document).ready(function(){
       
         var numFolio = Math.floor(Math.random() * 90000) + 10000;
         var folioInput = document.getElementById('folioInput');
-
         folioInput.value = numFolio
     });
     /*
@@ -667,7 +666,7 @@ var numeroFolio = $("#folio").text();
 
   var A1 = $("#anti1").text();
   var A2 = $("#anti2").text();
-  var balance = $("#balnc").text();
+  var balanc = $("#balnc").text();
   var notas = $("#nota").text();
 
 
@@ -959,7 +958,7 @@ var numeroFolio = $("#folio").text();
 
   doc.roundedRect (207, 590, 90, 15, 2, 2,'S'); //BALANCE
   doc.setFontSize(12);
-  //doc.text(balance,230, 620);
+  doc.text(balanc,230, 620);
   doc.roundedRect (207, 608, 90, 20,2,2,'S'); 
 
 
@@ -1011,7 +1010,8 @@ var numeroFolio = $("#folio").text();
   
 
   //descargar PDF
-  doc.save("Contrato_" + numeroFolio + ".pdf");}
+  doc.save("Contrato_" + numeroFolio + ".pdf");
+}
 
  
 

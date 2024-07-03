@@ -6,10 +6,10 @@ $(function(){
 
     $('#btnRgistrarCLiente').on('click',function(){
         const dataPost = {
-            nombre:$("#nombreCliente").val(),
-            telefono1:$("#telefonoCliente").val(),
-            telefono2:$("#telefono2Cliente").val(),
-            correo:$("#correoCliente").val()
+            nombre:$("#nombreCliente").val().toUpperCase(),
+            telefono1:$("#telefonoCliente").val().toUpperCase(),
+            telefono2:$("#telefono2Cliente").val().toUpperCase(),
+            correo:$("#correoCliente").val().toUpperCase()
         };
 
         console.log(dataPost);
@@ -32,15 +32,15 @@ $(function(){
         e.preventDefault();
 
         const dataPost = {   
-            cliente:$("#selectCliente").val(),
-            calle:$("#calleDomicilio").val(),
-            exterior:$("#exteriorDomicilio").val(),
-            interior:$("#interiorDomicilio").val(),
-            colonia:$("#coloniaDomicilio").val(),
-            ciudad:$("#ciudadDomicilio").val(),
-            estado:$("#estadoDomicilio").val(),
-            pais:$("#paisDomicilio").val(),
-            referencia:$("#referenciaDomicilio").val()
+            cliente:$("#selectCliente").val().toUpperCase(),
+            calle:$("#calleDomicilio").val().toUpperCase(),
+            exterior:$("#exteriorDomicilio").val().toUpperCase(),
+            interior:$("#interiorDomicilio").val().toUpperCase(),
+            colonia:$("#coloniaDomicilio").val().toUpperCase(),
+            ciudad:$("#ciudadDomicilio").val().toUpperCase(),
+            estado:$("#estadoDomicilio").val().toUpperCase(),
+            pais:$("#paisDomicilio").val().toUpperCase(),
+            referencia:$("#referenciaDomicilio").val().toUpperCase()
         };
 
         $.ajax({

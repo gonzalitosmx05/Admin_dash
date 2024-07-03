@@ -3,6 +3,8 @@ session_start();
 require ("../estructura/header.php");
 include("funciones/cargarClientes.php");
 include("modals/preview.php");
+include("modals/busq_cotiz.php");
+include("modals/info_cotiz.php");
 include("modals/agregar.php");
 require ("../estructura/sidebar.php");
 ?>
@@ -64,7 +66,7 @@ require ("../estructura/sidebar.php");
                                 <i class="fa-solid fa-user-plus"></i>
                                 Registrar Cliente
                             </button>                            
-                            <button class="dropdown-item" type="button">
+                            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#busq_cotiz">
                                 <i class="fa-brands fa-searchengin"></i>
                                 Buscar Cotizacion
                             </button>

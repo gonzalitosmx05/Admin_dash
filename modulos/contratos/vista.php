@@ -298,7 +298,7 @@ require ("../estructura/sidebar.php");
                                 <th scope="col" style="width: 200px;">Balance</th>
                                                           
                         </thead>
-                        <tbody id="balance">
+                        <tbody id="balanceT">
                             <tr id="row" class="fila-fija">
                             <td>
                                     <input required type="text" id="A1"class="A1 form-control" placeholder="0" autocomplete="off">
@@ -307,7 +307,7 @@ require ("../estructura/sidebar.php");
                                     <input required type="text" id="A2"class="A2 form-control"  autocomplete="off">
                                 </td>
                                 <td>
-                                    <input disabled type="text" id="balance"class="balance form-control" placeholder="0" autocomplete="off">
+                                <input disabled type="text" id="balance" class="balance form-control" placeholder="0" autocomplete="off">
                                 </td>
                             </tr>                        
                         </tbody>

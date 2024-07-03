@@ -1,4 +1,4 @@
-<div class="modal fade bd-example-modal-lg" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="modalpreview">
+<div class="modal fade bd-example-modal-lg" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="infoctiz">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -21,18 +21,18 @@
                     </div>
                     <div id="datosEncabezado" class="d-flex flex-row mb-3">
                         <div class="datos_cliente col w-auto">                            
-                            <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="nombreCliente">Cliente:</p>
-                            <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="contactoCliente">Contacto:</p>
-                            <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="direccionCliente">Direccion:</p>
-                            <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="ciudadCliente">Ciudad:</p>
-                            <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="telefonoCliente">Telefono:</p>
-                            <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="correoCliente">Correo:</p>
+                            <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="nCliente">Cliente:</p>
+                            <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="dCliente">Direccion:</p>
+                            <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="cuCliente">Ciudad:</p>
+                            <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="teCliente">Telefono:</p>
+                            <p class="fw-bold lh-1 m-0" style="font-size: x-small;" id="coCliente">Correo:</p>
                         </div>
                         <div class="col d-flex flex-row  justify-content-end">
                             <div class="vigencias">
-                                <p class="fw-bold lh-1 m-0 text-right" style="font-size: x-small;" id="fechaEmision">Fecha:</p>
-                                <p class="fw-bold lh-1 m-0 text-right" style="font-size: x-small;" id="fechaVigencia">Vigencia:</p>
-                                <p class="fw-bold lh-1 m-0 text-right" style="font-size: x-small;" id="agente">Agente:</p>
+                                <p class="fw-bold lh-1 m-0 text-right" style="font-size: x-small;" id="feEmision">Fecha:</p>
+                                <p class="fw-bold lh-1 m-0 text-right" style="font-size: x-small;" id="feVigencia">Vigencia:</p>
+                                <p hidden id="Nagente"></p>
+                                <p class="fw-bold lh-1 m-0 text-right" style="font-size: x-small;" id="agnte">Agente:</p>
                             </div>
                             <div class="Leyenda_Empresa w-auto">
                                 <img src="../../assets/imagenes/Leyenda.png" style="width: 130px;">
@@ -50,29 +50,28 @@
                         </table>  
                     </div>
                     <div id="totales" class="text-right" style="margin-bottom:10vh;">
-                        <p class="m-0" style="font-size: x-small;" id="subtotalPreview">SUBTOTAL:$</p>
-                        <p class="m-0" style="font-size: x-small;" id="ivaPreview">IVA:$</p>
-                        <p class="m-0" style="font-size: x-small;" id="totalPreview">TOTAL MXN:$</p>
+                        <p class="m-0" style="font-size: x-small;" id="subtotalPrw">SUBTOTAL:$</p>
+                        <p class="m-0" style="font-size: x-small;" id="ivaPrw">IVA:$</p>
+                        <p class="m-0" style="font-size: x-small;" id="totalPrew">TOTAL MXN:$</p>
                     </div> 
                     <div class="row m-2" id="Terminos y condiciones">
-                        <textarea disabled id="terminosPreview" class="form-control" rows="5" style="font-size: x-small;width:80%;color: black; background-color: white; "></textarea>
+                        <textarea disabled id="terminosPrw" class="form-control" rows="5" style="font-size: x-small;width:80%;color: black; background-color: white; "></textarea>
                         <img src="../../assets/imagenes/qrDead.png" style="width: 20%;" >
                     </div>                    
                 </div>                                                
             </div>
-            <div class="modal-footer">
-                 <button id="printAndSaveButton" class="btn btn-warning">
-                    <i class="fa-solid fa-print"></i>
-                    Imprimir & Guardar
-                </button>    
-                <button id="saveButton" class="btn btn-success">
-                    <i class="fa-solid fa-floppy-disk"></i>
-                    Guardar
-                </button>     
-                <button id="downloadSave" class="btn btn-primary">
+            <div class="modal-footer">   
+            <button id="clonarCtiz" id-data="" class="btn btn-warning">
+                <i class="fa-solid fa-external-link-alt"></i>
+                   Clonar
+                </button> 
+                <button id="ctizSave" class="btn btn-primary">
                     <i class="fa-solid fa-download"></i>
-                    Descargar y Guardar
-                </button>  
+                    Descargar
+                </button>    
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    Cancelar
+                </button>                
             </div>
         </div>
     </div>

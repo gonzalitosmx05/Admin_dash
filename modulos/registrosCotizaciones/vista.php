@@ -1,6 +1,7 @@
 <?php 
 session_start();
 require ("../estructura/header.php");
+require ("modals/info_ctiz.php");
 require ("../estructura/sidebar.php");
 ?>
 
@@ -24,14 +25,14 @@ require ("../estructura/sidebar.php");
                     </label>
                     <div class="d-flex">
                         <div class="" style="width: 20%;">
-                            <select class="form-control" id="filtroBusqueda">
-                                <option value="notasFilter">Conceptos</option>
-                                <option value="id_usuarioFilter">Agente</option>
-                                <option value="id_clienteFilter">Cliente</option>
+                            <select class="form-control" id="filtroBusquedaC">
+                                <option value="descripcion">Conceptos</option>
+                                <option value="id_cotizacion">Folio</option>
+                                <option value="nombre">Cliente</option>
                             </select>
                         </div>
                         <div class=" ml-2" style="width: 100%;">   
-                            <input id="barraBusqueda" class="form-control" type="text" placeholder="Buscar....">
+                            <input id="barrBusqueda" class="form-control" type="text" placeholder="Buscar...">
                         </div>
                     </div>
                 </div>
@@ -43,7 +44,7 @@ require ("../estructura/sidebar.php");
                                 <td class="text-center" style="width: 10%;">Folio</td>
                                 <td class="text-center" style="width: 10%;">Cliente</td>                
                                 <td class="text-center" style="width: 10%;">Emision</td>                            
-                                <td class="text-center" style="width: 65%;">Conceptos</td>`
+                                <td class="text-center" style="width: 65%;">Conceptos</td>
                                 <td class="text-center" style="width: 5%;">Opciones</td>
                             </tr>
                         </thead>

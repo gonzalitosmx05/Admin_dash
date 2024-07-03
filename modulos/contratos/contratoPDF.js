@@ -410,7 +410,7 @@ var numeroFolio = document.getElementById('folioInput').value;
 
     doc.roundedRect (207, 590, 90, 15, 2, 2,'S'); //BALANCE
     doc.setFontSize(12);
-    //doc.text(balance,230, 620);
+    doc.text(balance,230, 620);
     doc.roundedRect (207, 608, 90, 20,2,2,'S'); 
 
 
@@ -474,27 +474,27 @@ var numeroFolio = document.getElementById('folioInput').value;
 
 
       const dataPost = {
-        Idclient:$("#selectCliente").val(),
-        cuid:$("#ciudadDirectContrato").val(),
-        est:$("#estadoDirectContrato").val(),
+        Idclient:$("#selectCliente").val().toUpperCase(),
+        cuid:$("#ciudadDirectContrato").val().toUpperCase(),
+        est:$("#estadoDirectContrato").val().toUpperCase(),
         CE:CO,
         tel1:TE,
         tel2:TE2,
-        Iduser:$("#user").val(),
-        Nmclient:$("#selectCliente option:selected").text(),
-        marca:$("#marca").val(),
-        modelo:$("#modelo").val(),
-        n_serie:$("#nserie").val(),
-        anticipo1:$("#A1").val(),
-        anticipo2:$("#A2").val(),
-        balance:$("#balance").val(),
-        subtotal:$("#subtotalGeneral").val(),
-        iva:$("#ivaGeneral").val(),
-        total:$("#totalGeneral").val(),
-        f_pago:$("#selectpago").val(),
-        notas:$("#notas").val(),
+        Iduser:$("#user").val().toUpperCase(),
+        Nmclient:$("#selectCliente option:selected").text().toUpperCase(),
+        marca:$("#marca").val().toUpperCase(),
+        modelo:$("#modelo").val().toUpperCase(),
+        n_serie:$("#nserie").val().toUpperCase(),
+        anticipo1:$("#A1").val().toUpperCase(),
+        anticipo2:$("#A2").val().toUpperCase(),
+        balance:balance,
+        subtotal:$("#subtotalGeneral").val().toUpperCase(),
+        iva:$("#ivaGeneral").val().toUpperCase(),
+        total:$("#totalGeneral").val().toUpperCase(),
+        f_pago:$("#selectpago").val().toUpperCase(),
+        notas:$("#notas").val().toUpperCase(),
         folio:numeroFolio,
-        domi: $("#clientDirec option:selected").text(),
+        domi: $("#clientDirec option:selected").text().toUpperCase(),
         desc: [],
         cant:[],
         precio:[],
@@ -502,22 +502,22 @@ var numeroFolio = document.getElementById('folioInput').value;
       };
       
       $('input[name="descripcion[]"]').each(function() {
-          var valor = $(this).val();
+          var valor = $(this).val().toUpperCase();
           dataPost.desc.push(valor); 
       });
 
       $('input[name="cantidad[]"]').each(function() {
-        var valor = $(this).val();
+        var valor = $(this).val().toUpperCase();
         dataPost.cant.push(valor); 
     });
 
       $('input[name="precio[]"]').each(function() {
-        var valor = $(this).val();
+        var valor = $(this).val().toUpperCase();
         dataPost.precio.push(valor); 
     });
 
       $('input[name="subtotal[]"]').each(function() {
-        var valor = $(this).val();
+        var valor = $(this).val().toUpperCase();
         dataPost.subT.push(valor); 
     });
 
